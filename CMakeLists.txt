@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16...3.28)
-project(APSARA)
+project(MUON_LIFE_TIME)
 
 
 option(WITH_GEANT4_UIVIS "Build example with Geant4 UI and Vis drivers" ON)
@@ -37,7 +37,7 @@ foreach(_script ${SIMULATION_SCRIPTS})
     )
 endforeach()
 
-add_custom_target(APSARA DEPENDS simulation)
+add_custom_target(MUON_LIFE_TIME DEPENDS simulation)
 
 
 install(TARGETS simulation DESTINATION bin)

@@ -1,0 +1,5 @@
+C:/Users/apmna/OneDrive/Documents/GitHub/Calculation_of_muon_life_in_Geant4/build/CMakeFiles/simulation.dir
+C:/Users/apmna/OneDrive/Documents/GitHub/Calculation_of_muon_life_in_Geant4/build/CMakeFiles/MUON_LIFE_TIME.dir
+C:/Users/apmna/OneDrive/Documents/GitHub/Calculation_of_muon_life_in_Geant4/build/CMakeFiles/INSTALL.dir
+C:/Users/apmna/OneDrive/Documents/GitHub/Calculation_of_muon_life_in_Geant4/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/apmna/OneDrive/Documents/GitHub/Calculation_of_muon_life_in_Geant4/build/CMakeFiles/ZERO_CHECK.dir
