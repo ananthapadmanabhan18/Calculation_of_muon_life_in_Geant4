@@ -1,9 +1,0 @@
-/random/setSeeds 12345 67890
-/gps/particle gamma
-/gps/pos/type Point
-/gps/pos/centre 0.0 0.0 0.0
-/gps/ang/type iso
-#/gps/ene/type Arb
-/gps/hist/file energy_dist.root
-/gps/hist/type energy
-/run/beamOn 100
