@@ -16,9 +16,12 @@ include_directories(${PROJECT_SOURCE_DIR}/include)
 file(GLOB sources ${PROJECT_SOURCE_DIR}/src/*.cc)
 file(GLOB headers ${PROJECT_SOURCE_DIR}/include/*.hh)
 
+find_package(ROOT REQUIRED COMPONENTS RIO Net)
+include(${ROOT_USE_FILE})
 
 add_executable(simulation simulation.cc ${sources} ${headers})
-target_link_libraries(simulation ${Geant4_LIBRARIES})
+target_link_libraries(simulation PRIVATE ${Geant4_LIBRARIES} ${ROOT_LIBRARIES})
+
 
 
 
@@ -26,7 +29,6 @@ set(SIMULATION_SCRIPTS
   init_vis.mac
   run.mac
   vis.mac
-  energy_dist.root
   )
 
 foreach(_script ${SIMULATION_SCRIPTS})

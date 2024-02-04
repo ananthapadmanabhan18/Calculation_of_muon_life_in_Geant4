@@ -17,7 +17,7 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 43,
+				"line" : 45,
 				"parent" : 0
 			}
 		]
@@ -30,7 +30,7 @@
 			"destination" : "bin",
 			"paths" : 
 			[
-				"RelWithDebInfo/simulation.exe"
+				"MinSizeRel/simulation.exe"
 			],
 			"targetId" : "simulation::@6890427a1f51a3e7e1df",
 			"targetIndex" : 3,

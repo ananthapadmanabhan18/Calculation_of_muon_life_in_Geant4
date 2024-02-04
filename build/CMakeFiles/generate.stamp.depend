@@ -4,7 +4,6 @@ C:/Users/apmna/OneDrive/Documents/GitHub/Calculation_of_muon_life_in_Geant4/buil
 C:/Users/apmna/OneDrive/Documents/GitHub/Calculation_of_muon_life_in_Geant4/build/CMakeFiles/3.26.3/CMakeCXXCompiler.cmake
 C:/Users/apmna/OneDrive/Documents/GitHub/Calculation_of_muon_life_in_Geant4/build/CMakeFiles/3.26.3/CMakeRCCompiler.cmake
 C:/Users/apmna/OneDrive/Documents/GitHub/Calculation_of_muon_life_in_Geant4/build/CMakeFiles/3.26.3/CMakeSystem.cmake
-C:/Users/apmna/OneDrive/Documents/GitHub/Calculation_of_muon_life_in_Geant4/energy_dist.root
 C:/Users/apmna/OneDrive/Documents/GitHub/Calculation_of_muon_life_in_Geant4/init_vis.mac
 C:/Users/apmna/OneDrive/Documents/GitHub/Calculation_of_muon_life_in_Geant4/run.mac
 C:/Users/apmna/OneDrive/Documents/GitHub/Calculation_of_muon_life_in_Geant4/vis.mac
@@ -105,3 +104,9 @@ D:/Libraries/Qt/5.15.2/msvc2019_64/lib/cmake/Qt5Widgets/Qt5WidgetsConfigExtras.c
 D:/Libraries/Qt/5.15.2/msvc2019_64/lib/cmake/Qt5Widgets/Qt5WidgetsConfigVersion.cmake
 D:/Libraries/Qt/5.15.2/msvc2019_64/lib/cmake/Qt5Widgets/Qt5WidgetsMacros.cmake
 D:/Libraries/Qt/5.15.2/msvc2019_64/lib/cmake/Qt5Widgets/Qt5Widgets_QWindowsVistaStylePlugin.cmake
+D:/Libraries/root/cmake/ROOTConfig-targets-release.cmake
+D:/Libraries/root/cmake/ROOTConfig-targets.cmake
+D:/Libraries/root/cmake/ROOTConfig-version.cmake
+D:/Libraries/root/cmake/ROOTConfig.cmake
+D:/Libraries/root/cmake/ROOTUseFile.cmake
+D:/Libraries/root/cmake/RootMacros.cmake

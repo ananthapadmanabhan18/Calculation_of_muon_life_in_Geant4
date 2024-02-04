@@ -500,6 +500,49 @@
 			"path" : "D:/Libraries/Geant4/geant4install/lib/cmake/Geant4/UseGeant4.cmake"
 		},
 		{
+			"isExternal" : true,
+			"path" : "D:/Libraries/root/cmake/ROOTConfig-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "D:/Libraries/root/cmake/ROOTConfig.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "D:/Libraries/root/cmake/RootMacros.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/Apps/CMake/share/cmake-3.26/Modules/CMakeParseArguments.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "D:/Libraries/root/cmake/ROOTConfig-targets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "D:/Libraries/root/cmake/ROOTConfig-targets-release.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/Apps/CMake/share/cmake-3.26/Modules/CMakeFindDependencyMacro.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "D:/Libraries/root/cmake/ROOTUseFile.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "D:/Libraries/root/cmake/RootMacros.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/Apps/CMake/share/cmake-3.26/Modules/CMakeParseArguments.cmake"
+		},
+		{
 			"path" : "init_vis.mac"
 		},
 		{
@@ -507,9 +550,6 @@
 		},
 		{
 			"path" : "vis.mac"
-		},
-		{
-			"path" : "energy_dist.root"
 		}
 	],
 	"kind" : "cmakeFiles",

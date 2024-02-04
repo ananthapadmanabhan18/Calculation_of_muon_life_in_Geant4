@@ -263,6 +263,105 @@ Qt5PrintSupport_DIR:PATH=D:/Libraries/Qt/5.15.2/msvc2019_64/lib/cmake/Qt5PrintSu
 //The directory containing a CMake configuration file for Qt5Widgets.
 Qt5Widgets_DIR:PATH=D:/Libraries/Qt/5.15.2/msvc2019_64/lib/cmake/Qt5Widgets
 
+//Path to a library.
+ROOT_Core_LIBRARY:FILEPATH=D:/Libraries/root/lib/libCore.lib
+
+//The directory containing a CMake configuration file for ROOT.
+ROOT_DIR:PATH=D:/Libraries/root/cmake
+
+//Path to a library.
+ROOT_Gpad_LIBRARY:FILEPATH=D:/Libraries/root/lib/libGpad.lib
+
+//Path to a library.
+ROOT_Graf3d_LIBRARY:FILEPATH=D:/Libraries/root/lib/libGraf3d.lib
+
+//Path to a library.
+ROOT_Graf_LIBRARY:FILEPATH=D:/Libraries/root/lib/libGraf.lib
+
+//Path to a library.
+ROOT_Hist_LIBRARY:FILEPATH=D:/Libraries/root/lib/libHist.lib
+
+//Path to a library.
+ROOT_Imt_LIBRARY:FILEPATH=D:/Libraries/root/lib/libImt.lib
+
+//Path to a library.
+ROOT_MathCore_LIBRARY:FILEPATH=D:/Libraries/root/lib/libMathCore.lib
+
+//Path to a library.
+ROOT_Matrix_LIBRARY:FILEPATH=D:/Libraries/root/lib/libMatrix.lib
+
+//Path to a library.
+ROOT_MultiProc_LIBRARY:FILEPATH=ROOT_MultiProc_LIBRARY-NOTFOUND
+
+//Path to a library.
+ROOT_Net_LIBRARY:FILEPATH=D:/Libraries/root/lib/libNet.lib
+
+//Path to a library.
+ROOT_Physics_LIBRARY:FILEPATH=D:/Libraries/root/lib/libPhysics.lib
+
+//Path to a library.
+ROOT_Postscript_LIBRARY:FILEPATH=D:/Libraries/root/lib/libPostscript.lib
+
+//Path to a library.
+ROOT_RIO_LIBRARY:FILEPATH=D:/Libraries/root/lib/libRIO.lib
+
+//Path to a library.
+ROOT_ROOTDataFrame_LIBRARY:FILEPATH=D:/Libraries/root/lib/libROOTDataFrame.lib
+
+//Path to a library.
+ROOT_ROOTVecOps_LIBRARY:FILEPATH=D:/Libraries/root/lib/libROOTVecOps.lib
+
+//Path to a library.
+ROOT_Rint_LIBRARY:FILEPATH=D:/Libraries/root/lib/libRint.lib
+
+//Path to a library.
+ROOT_Thread_LIBRARY:FILEPATH=D:/Libraries/root/lib/libThread.lib
+
+//Path to a library.
+ROOT_TreePlayer_LIBRARY:FILEPATH=D:/Libraries/root/lib/libTreePlayer.lib
+
+//Path to a library.
+ROOT_Tree_LIBRARY:FILEPATH=D:/Libraries/root/lib/libTree.lib
+
+//Path to a program.
+ROOT_genmap_CMD:FILEPATH=ROOT_genmap_CMD-NOTFOUND
+
+//Path to a program.
+ROOT_genreflex_CMD:FILEPATH=D:/Libraries/root/bin/genreflex.exe
+
+//Path to a program.
+ROOT_hadd_CMD:FILEPATH=D:/Libraries/root/bin/hadd.exe
+
+//Path to a program.
+ROOT_root_CMD:FILEPATH=D:/Libraries/root/bin/root.exe
+
+//Path to a program.
+ROOT_rootbrowse_CMD:FILEPATH=ROOT_rootbrowse_CMD-NOTFOUND
+
+//Path to a program.
+ROOT_rootcint_CMD:FILEPATH=D:/Libraries/root/bin/rootcint.exe
+
+//Path to a program.
+ROOT_rootcling_CMD:FILEPATH=D:/Libraries/root/bin/rootcling.exe
+
+//Path to a program.
+ROOT_rootcp_CMD:FILEPATH=ROOT_rootcp_CMD-NOTFOUND
+
+//Path to a program.
+ROOT_rootdraw_CMD:FILEPATH=ROOT_rootdraw_CMD-NOTFOUND
+
+//Path to a program.
+ROOT_rootls_CMD:FILEPATH=ROOT_rootls_CMD-NOTFOUND
+
+//Path to a program.
+ROOT_rootmkdir_CMD:FILEPATH=ROOT_rootmkdir_CMD-NOTFOUND
+
+//Path to a program.
+ROOT_rootmv_CMD:FILEPATH=ROOT_rootmv_CMD-NOTFOUND
+
+//Path to a program.
+ROOT_rootrm_CMD:FILEPATH=ROOT_rootrm_CMD-NOTFOUND
+
 //Build example with Geant4 UI and Vis drivers
 WITH_GEANT4_UIVIS:BOOL=ON
 
@@ -413,4 +512,50 @@ FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
 OPENGL_gl_LIBRARY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: OPENGL_glu_LIBRARY
 OPENGL_glu_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ROOT_Core_LIBRARY
+ROOT_Core_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ROOT_Gpad_LIBRARY
+ROOT_Gpad_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ROOT_Graf3d_LIBRARY
+ROOT_Graf3d_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ROOT_Graf_LIBRARY
+ROOT_Graf_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ROOT_Hist_LIBRARY
+ROOT_Hist_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ROOT_Imt_LIBRARY
+ROOT_Imt_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ROOT_MathCore_LIBRARY
+ROOT_MathCore_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ROOT_Matrix_LIBRARY
+ROOT_Matrix_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ROOT_Net_LIBRARY
+ROOT_Net_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ROOT_Physics_LIBRARY
+ROOT_Physics_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ROOT_Postscript_LIBRARY
+ROOT_Postscript_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ROOT_RIO_LIBRARY
+ROOT_RIO_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ROOT_ROOTDataFrame_LIBRARY
+ROOT_ROOTDataFrame_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ROOT_ROOTVecOps_LIBRARY
+ROOT_ROOTVecOps_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ROOT_Rint_LIBRARY
+ROOT_Rint_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ROOT_Thread_LIBRARY
+ROOT_Thread_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ROOT_TreePlayer_LIBRARY
+ROOT_TreePlayer_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ROOT_Tree_LIBRARY
+ROOT_Tree_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ROOT_genreflex_CMD
+ROOT_genreflex_CMD-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ROOT_hadd_CMD
+ROOT_hadd_CMD-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ROOT_root_CMD
+ROOT_root_CMD-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ROOT_rootcint_CMD
+ROOT_rootcint_CMD-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ROOT_rootcling_CMD
+ROOT_rootcling_CMD-ADVANCED:INTERNAL=1
 
