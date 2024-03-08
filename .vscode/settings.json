@@ -1,3 +1,5 @@
 {
-    "cmake.buildDirectory": "D://All_builds//muonlife"
+    "files.associations": {
+        "PLots_muon.C": "cpp"
+    }
 }
