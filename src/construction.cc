@@ -23,12 +23,15 @@ G4VPhysicalVolume *detectorconstruction::Construct(){
     WW->SetForceSolid(true);    
     // logicworld->SetVisAttributes(WW);
 
-    G4double height = 0.6*m;
+    G4double height = 0.125*m;
+
+
+
 
 
     //Defining the Copper can
     G4Material* copper = nistManager->FindOrBuildMaterial("G4_Cu");
-    G4double can_R_out = (60/2)*cm;
+    G4double can_R_out = (15/2)*cm;
     G4double can_R_in = can_R_out-(0.1*cm);
     G4RotationMatrix* rot = new G4RotationMatrix();
     rot->rotateX(90*deg);
