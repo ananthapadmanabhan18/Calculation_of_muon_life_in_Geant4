@@ -34,7 +34,7 @@ set(SIMULATION_SCRIPTS
 foreach(_script ${SIMULATION_SCRIPTS})
   configure_file(
     ${PROJECT_SOURCE_DIR}/Macros/${_script}
-    ${PROJECT_BINARY_DIR}/${_script}
+    ${PROJECT_BINARY_DIR}/Release/${_script}
     COPYONLY
     )
 endforeach()

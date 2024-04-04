@@ -24,7 +24,18 @@ G4VPhysicalVolume *detectorconstruction::Construct(){
     // logicworld->SetVisAttributes(WW);
 
 
+
+    G4double energy[2] = {1.239841939*eV/0.9, 1.239841939*eV/0.2};
+    G4double rindexSchintillation[2] = {1.1, 1.1};
+    G4double rindexWorld[2] = {1.0, 1.0};
+    G4MaterialPropertiesTable *scintillator_mpt = new G4MaterialPropertiesTable();
+    scintillator_mpt->AddProperty("RINDEX", energy, rindexSchintillation, 2);
+    G4MaterialPropertiesTable *mptWorld = new G4MaterialPropertiesTable();
+    mptWorld->AddProperty("RINDEX", energy, rindexWorld, 2);  
+    
+    air->SetMaterialPropertiesTable(mptWorld);
     G4Material* Scintillator_mat = nistManager->FindOrBuildMaterial("G4_PLASTIC_SC_VINYLTOLUENE");
+    Scintillator_mat->SetMaterialPropertiesTable(scintillator_mpt);
     G4Box* Scintillator = new G4Box("Scintillator", 7.5*cm, 7.5*cm, 7.5*cm);
     G4LogicalVolume* logicScintillator = new G4LogicalVolume(Scintillator, Scintillator_mat, "logicalScintillator");
     new G4PVPlacement(nullptr, G4ThreeVector(0,0,0), logicScintillator, "physicalScintillator", logicworld, false, 0, checkoverlap);

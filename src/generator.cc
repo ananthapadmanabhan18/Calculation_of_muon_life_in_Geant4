@@ -4,30 +4,23 @@
 
 primarygenerator::primarygenerator(){
 
-    fparticlesource = new G4GeneralParticleSource();
-    fparticlesource->SetParticleDefinition(G4Gamma::Definition());  
-    G4ThreeVector pos(0*m,0*m,0*m);
-    fparticlesource->SetParticlePosition(pos);
+    fparticlegun = new G4ParticleGun(1);
+    fparticlegun->SetParticleDefinition(G4MuonMinus::Definition());  
+    G4ThreeVector pos(0*m,0*m,1*m);
+    fparticlegun->SetParticlePosition(pos);
+    fparticlegun->SetParticleEnergy(200*MeV);
+    G4ThreeVector mom(0,0,-1);
+    fparticlegun->SetParticleMomentumDirection(mom);
 }
 
 primarygenerator::~primarygenerator(){
-    delete fparticlesource;
+    delete fparticlegun;
 }
 
 
 void primarygenerator::GeneratePrimaries(G4Event *anEvent)
 {
-    G4Random::setTheSeed(time(time_t(0)));
-    G4double randomNumber1 = G4UniformRand();
-    G4double randomNumber2 = G4UniformRand();
-    G4double randomNumber3 = G4UniformRand();
-    G4double x0 = (randomNumber1-0.5);
-    G4double y0 = (randomNumber2-0.5);
-    G4double z0 = (randomNumber3-0.5);
-    G4ThreeVector pos(x0*m,y0*m,z0*m);
-    
-    fparticlesource->GeneratePrimaryVertex(anEvent);
-
+    fparticlegun->GeneratePrimaryVertex(anEvent);
 }
 
 
