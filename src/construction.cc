@@ -51,6 +51,12 @@ G4VPhysicalVolume *detectorconstruction::Construct(){
     G4Material* steel = new G4Material("Steel", density, 2);
     steel->AddElement(elFe, 99.5*perCent); // Specify proportion of iron
     steel->AddElement(elC, 0.5*perCent);   // Specify proportion of carbon
+    G4double reflectivity = 0.5;
+    G4MaterialPropertiesTable* steelMPT = new G4MaterialPropertiesTable();
+    G4double photonEnergySteel[] = {2.034*eV, 4.136*eV};
+    G4double reflectivitySteel[] = {reflectivity, reflectivity};
+    steelMPT->AddProperty("REFLECTIVITY", photonEnergySteel, reflectivitySteel, 2);
+    steel->SetMaterialPropertiesTable(steelMPT);
     G4Tubs* jug_in = new G4Tubs("jugin", 8.5*cm, 9*cm, 20*cm, 0, 2*M_PI);
     G4LogicalVolume* logicjugin = new G4LogicalVolume(jug_in, steel, "logicaljugin");
     new G4PVPlacement(rot_jug, G4ThreeVector(0,0,0), logicjugin, "physicaljugin", logicworld, false, 0, checkoverlap);
@@ -59,6 +65,13 @@ G4VPhysicalVolume *detectorconstruction::Construct(){
     visjugin->SetForceSolid(true);
 
     G4Material* water = nistManager->FindOrBuildMaterial("G4_WATER");
+    // Define refractive index of water
+    G4double refractiveIndexWater = 1.33;
+    G4MaterialPropertiesTable* waterMPT = new G4MaterialPropertiesTable();
+    G4double photonEnergy[] = {2.034*eV, 4.136*eV};
+    G4double refractiveIndex[] = {refractiveIndexWater, refractiveIndexWater};
+    waterMPT->AddProperty("RINDEX", photonEnergy, refractiveIndex, 2);
+    water->SetMaterialPropertiesTable(waterMPT);
     G4Tubs* jug_water = new G4Tubs("jugwater", 0, 8.5*cm, 20*cm, 0, 2*M_PI);
     G4LogicalVolume* logicjugwater = new G4LogicalVolume(jug_water, water, "logicaljugwater");
     new G4PVPlacement(rot_jug, G4ThreeVector(0,0,0), logicjugwater, "physicaljugwater", logicworld, false, 0, checkoverlap);

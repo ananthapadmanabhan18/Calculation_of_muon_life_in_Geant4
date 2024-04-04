@@ -25,7 +25,7 @@ class primarygenerator : public G4VUserPrimaryGeneratorAction
         ~primarygenerator();
         virtual void GeneratePrimaries(G4Event*);
     private:    
-        G4GeneralParticleSource* fparticlesource;
+        G4ParticleGun* fparticlegun;
 
 };
 
