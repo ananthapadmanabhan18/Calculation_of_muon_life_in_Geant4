@@ -37,7 +37,7 @@ class detectorconstruction : public G4VUserDetectorConstruction
 
     private:
         virtual void ConstructSDandField();
-        G4LogicalVolume* logic_copper_can;
+        G4LogicalVolume* logic_pmt;
 
 };
 

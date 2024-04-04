@@ -31,7 +31,7 @@
 
 
 /vis/scene/add/scale   
-/vis/scene/add/axes    
+#/vis/scene/add/axes    
 /vis/scene/add/eventID 
 /vis/scene/add/date    
 /vis/scene/add/logo2D  

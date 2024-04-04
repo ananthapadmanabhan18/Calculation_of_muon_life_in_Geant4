@@ -16,30 +16,40 @@ G4VPhysicalVolume *detectorconstruction::Construct(){
 
     //Defining World Volume
     G4Material* air = nistManager->FindOrBuildMaterial("G4_AIR");
-    G4Box* worldvol = new G4Box("world",5*m,5*m,5*m);
+    G4Box* worldvol = new G4Box("world",7.5*m,7.5*m,7.5*m);
     G4LogicalVolume* logicworld = new G4LogicalVolume(worldvol, air, "logicalworld");
     G4VPhysicalVolume* physicalworld = new G4PVPlacement(nullptr, G4ThreeVector(0,0,0), logicworld, "physicalworld", nullptr, false, 0, checkoverlap);
     G4VisAttributes* WW = new G4VisAttributes(G4Colour(0.85, 0.85, 1, 0));
     WW->SetForceSolid(true);    
     // logicworld->SetVisAttributes(WW);
 
-    G4double height = 0.125*m;
+
+    G4Material* Scintillator_mat = nistManager->FindOrBuildMaterial("G4_PLASTIC_SC_VINYLTOLUENE");
+    G4Box* Scintillator = new G4Box("Scintillator", 7.5*cm, 7.5*cm, 7.5*cm);
+    G4LogicalVolume* logicScintillator = new G4LogicalVolume(Scintillator, Scintillator_mat, "logicalScintillator");
+    new G4PVPlacement(nullptr, G4ThreeVector(0,0,0), logicScintillator, "physicalScintillator", logicworld, false, 0, checkoverlap);
+    G4VisAttributes* visScint = new G4VisAttributes(G4Colour(0.5, 0.5, 0.5, 0.5));
+    visScint->SetForceSolid(true);
+    logicScintillator->SetVisAttributes(visScint);
 
 
 
 
 
-    //Defining the Copper can
-    G4Material* copper = nistManager->FindOrBuildMaterial("G4_Cu");
-    G4double can_R_out = (15/2)*cm;
-    G4double can_R_in = can_R_out-(0.1*cm);
+    //Defining the Photon Multiplier Detector
+    G4Material* glass = nistManager->FindOrBuildMaterial("G4_GLASS_PLATE");
+    G4double* height_pmt = new G4double(0.5*cm);
+    G4double* radius_pmt = new G4double(0.5*cm);
     G4RotationMatrix* rot = new G4RotationMatrix();
     rot->rotateX(90*deg);
-    G4Tubs* copper_can = new G4Tubs("copper_can", can_R_in, can_R_out,height, 0, 2*M_PI);
-    logic_copper_can = new G4LogicalVolume(copper_can, copper, "logicalcopper_can");
-    new G4PVPlacement(rot, G4ThreeVector(0,0,0), logic_copper_can, "physicalcopper_can", logicworld, false, 0, checkoverlap);
-    G4VisAttributes* visCu = new G4VisAttributes(G4Colour(184/200,115/200,51/200, 0.5));
-    visCu->SetForceSolid(true);
+    G4Tubs* pmt = new G4Tubs("pmt", 0, *radius_pmt, *height_pmt, 0, 2*M_PI);
+    logic_pmt = new G4LogicalVolume(pmt, glass, "logical_pmt");
+    new G4PVPlacement(rot, G4ThreeVector(0,7.5*cm + 0.25*cm,0), logic_pmt, "physical_pmt", logicworld, false, 0, checkoverlap);
+    G4VisAttributes* vis_pmt = new G4VisAttributes(G4Colour(0.5, 0.5, 0.5, 0.5));
+    vis_pmt->SetForceSolid(true);
+    logic_pmt->SetVisAttributes(vis_pmt);
+
+
 
     return physicalworld;
 }
@@ -48,5 +58,5 @@ G4VPhysicalVolume *detectorconstruction::Construct(){
 
 void detectorconstruction::ConstructSDandField(){
     sensitivedetector *sensdet = new sensitivedetector("SD");
-    logic_copper_can->SetSensitiveDetector(sensdet);
+    logic_pmt->SetSensitiveDetector(sensdet);
 }
