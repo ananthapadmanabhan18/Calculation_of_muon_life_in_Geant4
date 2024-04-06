@@ -1,0 +1,1 @@
+<solids xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><box name="WorldBox" x="1.0" y="1.0" z="1.0" lunit="m"/><box name="Box" x="26.5" y="14.5" z="26.5" lunit="cm"/><tube name="GDMLTube" rmin="4.25" rmax="4.75" startphi="0.0" deltaphi="360.0" aunit="deg" z="0.5" lunit="cm"/></solids>

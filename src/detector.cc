@@ -15,7 +15,7 @@ G4bool sensitivedetector:: ProcessHits(G4Step *aStep, G4TouchableHistory *ROhist
     G4ParticleDefinition* particle = track->GetDefinition();
     G4String particleName = particle->GetParticleName();
 
-    if(particleName == "gamma"){
+    if(particleName == "photon"){
         G4double energy = track->GetTotalEnergy();
         G4ThreeVector position = preStepPoint->GetPosition();
         man->FillNtupleDColumn(0,energy);
