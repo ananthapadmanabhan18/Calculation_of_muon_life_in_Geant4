@@ -41,9 +41,9 @@ class detectorconstruction : public G4VUserDetectorConstruction
         G4LogicalVolume* logic_pmt; 
         G4double energy[2] = {1.239841939*eV/0.9, 1.239841939*eV/0.2};
         G4double rindexWorld[2] = {1.0, 1.0};
-        G4double rindexSchintillation[2] = {1.1, 1.1};        
-
-        
+        G4double rindexSchintillation[2] = {1.1, 1.1};  
+        G4LogicalVolume* logic_world;
+     
 };
 
 
