@@ -1,6 +1,7 @@
 #include "G4RunManagerFactory.hh"
 #include "G4SteppingVerbose.hh"
 #include "G4UImanager.hh"
+#include "G4Types.hh"
 #include "G4VisExecutive.hh"
 #include "G4UIExecutive.hh"
 #include "Randomize.hh"
@@ -28,15 +29,8 @@ int main(int argc,char** argv)
 
 
   // runManager->SetUserInitialization(new detectorconstruction());
-
-  G4GDMLParser parser;
-  parser.SetOverlapCheck(true);
-  parser.Read("C:\\Users\\apmna\\OneDrive\\Documents\\GitHub\\Calculation_of_muon_life_in_Geant4\\Geometry\\ScintillatorSetup-worldVOL\\ScintillatorSetup-worldVOL.gdml");
-
-  runManager->SetUserInitialization(new GDMLDetectorConstruction(parser.GetWorldVolume()));
-
-
-
+  G4String filrpath = "C:\\Users\\apmna\\OneDrive\\Documents\\GitHub\\Calculation_of_muon_life_in_Geant4\\Geometry\\ScintillatorSetup-worldVOL.gdml";
+  runManager->SetUserInitialization(new GDMLDetectorConstruction(filrpath));
   runManager->SetUserInitialization(new physicslist());
   runManager->SetUserInitialization(new actioninitialization());
 
@@ -61,3 +55,7 @@ int main(int argc,char** argv)
   delete runManager;
 }
 
+// void detectorconstruction::ConstructSDandField(){
+//     sensitivedetector *sensdet = new sensitivedetector("SD");
+//     logic_pmt->SetSensitiveDetector(sensdet);
+// }
