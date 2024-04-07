@@ -64,7 +64,7 @@
 \thispagestyle{empty}
 \baselineskip25pt
 \begin{center}
-{\Large {\textbf{EXPERIMENTS WITH LOCK-IN-AMPLIFIER USING EXPEYES (Calibration, Low Resistance and CV profiling)}}}\\
+{\Large {\textbf{CALCULATION OF MUON LIFE TIME USING SCINTILLATION \\AND CHERENKOV RADIATION WITH TEACHSPIN SETUP}}}\\
 \end{center}
 
 \vfill
@@ -126,17 +126,20 @@ Dr. Gunda Santosh Babu}
 
 \newpage
 \begin{center}
-    \large{\textbf{EXPERIMENTS WITH LOCK-IN-AMPLIFIER USING EXPEYES\\ (Calibration, Low Resistance and CV profiling)}}
+    \large{\textbf{CALCULATION OF MUON LIFE TIME USING SCINTILLATOR DETECTOR \\ AND CHERENKOV RADIATION WITH TEACHSPIN SETUP}}
 \end{center}
 \begin{abstract}
-    This experiment primarily centres on constructing a Lock-in amplifier using ExpEYES/SeeLAB, validating its functionality, and subsequently conducting various experiments employing the built apparatus. These experiments encompass calibration, low resistance measurement, and CV profiling of both monocrystalline and polycrystalline solar cells. The obtained results demonstrated close conformity with actual data. Furthermore, given the affordability and accessibility of the components utilized, this cost-effective approach to lock-in detection proves to be particularly suitable for instructional laboratories 
+    This experiment aimed to determine the mean life of muons using the teachspin setup. Initially, data was collected with a scintillation detector connected to a PMT using teachspin software. Later, the setup was modified, replacing the scintillation detector with a Cherenkov detector connected to the PMT. Data was collected using the same software, and the mean muon life was calculated from this data. Subsequently, both sets of data were analyzed using Python and ROOT libraries. Additionally, a Geant4 simulation was conducted for the modified setup, and its data was also analyzed using ROOT libraries. A comparison was made between the results obtained from the Geant4 simulation and the teachspin setup, followed by a discussion of the findings.
 \end{abstract}
 \begin{multicols}{2}
 \pagenumbering{arabic}
 
 
 
-\section{Introduction}
+
+
+
+\section{\label{intro}Introduction}
 
 A flexible open-source hardware and software framework called ExpEYES, which stands for "Experiments for Young Engineers and Scientists," is intended for use in physics, electronics, biology, and chemistry investigations. ExpEYES, created by the Inter-University Accelerator Centre in India, offers a practical and affordable approach to science teaching and experimentation. The lock-in amplifier operates on the basis of phase-sensitive detection, in which the target signal is efficiently isolated from noise by modulating it at a known frequency and then demodulating it at the same frequency. 
 
