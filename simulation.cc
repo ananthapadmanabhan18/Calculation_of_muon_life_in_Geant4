@@ -4,7 +4,7 @@
 #include "G4VisExecutive.hh"
 #include "G4UIExecutive.hh"
 #include "Randomize.hh"
-
+#include "G4VUserDetectorConstruction.hh"
 #include "construction.hh"
 #include "physics.hh"
 #include "action.hh"
@@ -27,7 +27,16 @@ int main(int argc,char** argv)
   auto* runManager = G4RunManagerFactory::CreateRunManager(G4RunManagerType::Default);
 
 
-  runManager->SetUserInitialization(new detectorconstruction());
+  // runManager->SetUserInitialization(new detectorconstruction());
+
+  G4GDMLParser parser;
+  parser.SetOverlapCheck(true);
+  parser.Read("C:\\Users\\apmna\\OneDrive\\Documents\\GitHub\\Calculation_of_muon_life_in_Geant4\\Geometry\\ScintillatorSetup-worldVOL\\ScintillatorSetup-worldVOL.gdml");
+
+  runManager->SetUserInitialization(new GDMLDetectorConstruction(parser.GetWorldVolume()));
+
+
+
   runManager->SetUserInitialization(new physicslist());
   runManager->SetUserInitialization(new actioninitialization());
 

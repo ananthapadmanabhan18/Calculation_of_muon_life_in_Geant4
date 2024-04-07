@@ -4,9 +4,6 @@
 #ifndef M_PI
 #define M_PI 3.14159265358979323846
 #endif
-
-
-
 #include "G4VUserDetectorConstruction.hh"
 #include "G4VPhysicalVolume.hh"
 #include "G4LogicalVolume.hh"
@@ -46,7 +43,24 @@ class detectorconstruction : public G4VUserDetectorConstruction
      
 };
 
+class GDMLDetectorConstruction : public G4VUserDetectorConstruction
+{
+  public:
+ 
+    GDMLDetectorConstruction(G4VPhysicalVolume *setWorld = 0)
+    {   
+      fWorld = setWorld;
+    }
 
+    virtual G4VPhysicalVolume *Construct()
+    {
+      return fWorld;
+    }
+
+  private:
+
+    G4VPhysicalVolume *fWorld;
+};
 
 
 
