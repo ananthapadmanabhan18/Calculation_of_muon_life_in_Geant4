@@ -61,10 +61,10 @@
 // }
 
 
-void GDMLDetectorConstruction::ConstructSDandField(){
-    sensitivedetector *sensdet = new sensitivedetector("SD");
-    // logic_pmt->SetSensitiveDetector(sensdet);
-}
+// void GDMLDetectorConstruction::ConstructSDandField(){
+//     sensitivedetector *sensdet = new sensitivedetector("SD");
+//     // logic_pmt->SetSensitiveDetector(sensdet);
+// }
 
 
 
