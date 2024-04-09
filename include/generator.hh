@@ -17,6 +17,7 @@
 #include <fstream>
 #include <iostream>
 #include <vector>
+#include "EcoMug.h"
 
 class primarygenerator : public G4VUserPrimaryGeneratorAction
 {
@@ -24,9 +25,10 @@ class primarygenerator : public G4VUserPrimaryGeneratorAction
         primarygenerator ();
         ~primarygenerator();
         virtual void GeneratePrimaries(G4Event*);
+        
     private:    
         G4ParticleGun* fparticlegun;
-
+        EcoMug* ecoMug;
 };
 
 #endif

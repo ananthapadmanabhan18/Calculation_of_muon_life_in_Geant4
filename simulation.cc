@@ -30,7 +30,7 @@ int main(int argc,char** argv)
 
   // runManager->SetUserInitialization(new detectorconstruction());
   G4String filrpath = "C:\\Users\\apmna\\OneDrive\\Documents\\GitHub\\Calculation_of_muon_life_in_Geant4\\Geometry\\ScintillatorSetup-worldVOL.gdml";
-  runManager->SetUserInitialization(new GDMLDetectorConstruction(filrpath));
+  runManager->SetUserInitialization(new detectorconstruction);
   runManager->SetUserInitialization(new physicslist());
   runManager->SetUserInitialization(new actioninitialization());
 
@@ -54,8 +54,3 @@ int main(int argc,char** argv)
   delete visManager;
   delete runManager;
 }
-
-// void detectorconstruction::ConstructSDandField(){
-//     sensitivedetector *sensdet = new sensitivedetector("SD");
-//     logic_pmt->SetSensitiveDetector(sensdet);
-// }

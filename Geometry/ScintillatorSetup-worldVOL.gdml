@@ -4,35 +4,66 @@
     <constant name="HALFPI" value="pi/2."/>
   <constant name="PI" value="1.*pi"/>
   <constant name="TWOPI" value="2.*pi"/>
-  <position name="P-LV_Tube1" unit="mm" y="75.0"/>
-  <rotation name="R-LV_Tube1" unit="deg" x="-89.99999999999999"/>
+  <position name="center" x="0" y="0" z="0" unit="mm"/>
+  <rotation name="identity" x="0" y="0" z="0"/>
+  <position name="P-PMT_Support_11" unit="mm" y="75.0"/>
+  <rotation name="R-PMT_Support_11" unit="deg" x="-89.99999999999999"/>
+  <position name="P-PMT2" unit="mm" y="152.5"/>
+  <rotation name="R-PMT2" unit="deg" x="-90.0"/>
   </define>
 <materials/>
 <solids>
-    <box name="WorldBox" x="1000" y="1000" z="1000" lunit="mm"/>
+    <box name="WorldBox" x="1.0" y="1.0" z="1.0" lunit="m"/>
+  <box name="Box" x="26.5" y="14.5" z="26.5" lunit="cm"/>
   <tube name="PMT_support_1" rmin="4.25" rmax="4.75" startphi="0.0" deltaphi="360.0" aunit="deg" z="0.5" lunit="cm"/>
+  <tube name="PMT001" rmin="3.75" rmax="4.25" startphi="0.0" deltaphi="360.0" aunit="deg" z="16.0" lunit="cm"/>
   </solids>
 <structure>
-    <volume name="LV_Tube">
-      <materialref ref="G4_AIR"/>
-    <solidref ref="WorldBox"/>
-    <physvol name="PV-dummy">
-        <volumeref ref="dummy"/>
-      </physvol>
-    <physvol name="PV-LV_Tube">
-        <volumeref ref="LV_Tube"/>
-      <positionref ref="P-LV_Tube1"/>
-      <rotationref ref="R-LV_Tube1"/>
-      </physvol>
+    <volume name="V-Box">
+      <materialref ref="G4_A-150_TISSUE"/>
+    <solidref ref="Box"/>
+    <auxiliary auxtype="Color" auxvalue="#80808000"/>
     </volume>
-  <volume name="LV_Tube">
+  <assembly name="scintillator">
+      <physvol name="PV-GDMLBox_Box">
+        <volumeref ref="V-Box"/>
+      <positionref ref="center"/>
+      <rotationref ref="identity"/>
+      </physvol>
+    </assembly>
+  <volume name="PMT_Support_1">
       <materialref ref="G4_A-150_TISSUE"/>
     <solidref ref="PMT_support_1"/>
+    <auxiliary auxtype="Color" auxvalue="#80808000"/>
     <auxiliary auxtype="SensDet" auxvalue=""/>
     <auxiliary auxtype="SensDet" auxvalue=""/>
+    </volume>
+  <volume name="PMT">
+      <materialref ref="G4_ALUMINUM_OXIDE"/>
+    <solidref ref="PMT001"/>
+    <auxiliary auxtype="Color" auxvalue="#ffdfff00"/>
+    </volume>
+  <volume name="worldVOL">
+      <materialref ref="G4_AIR"/>
+    <solidref ref="WorldBox"/>
+    <physvol name="PV-scintillator">
+        <volumeref ref="scintillator"/>
+      <positionref ref="center"/>
+      <rotationref ref="identity"/>
+      </physvol>
+    <physvol name="PV-PMT_Support_1">
+        <volumeref ref="PMT_Support_1"/>
+      <positionref ref="P-PMT_Support_11"/>
+      <rotationref ref="R-PMT_Support_11"/>
+      </physvol>
+    <physvol name="PV-PMT">
+        <volumeref ref="PMT"/>
+      <positionref ref="P-PMT2"/>
+      <rotationref ref="R-PMT2"/>
+      </physvol>
     </volume>
   </structure>
 <setup name="Default" version="1.0">
-    <world ref="LV_Tube"/>
+    <world ref="worldVOL"/>
   </setup>
 </gdml>

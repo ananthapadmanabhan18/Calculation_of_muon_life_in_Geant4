@@ -15,9 +15,11 @@ include_directories(${PROJECT_SOURCE_DIR}/include)
 
 file(GLOB sources ${PROJECT_SOURCE_DIR}/src/*.cc)
 file(GLOB headers ${PROJECT_SOURCE_DIR}/include/*.hh)
+file(GLOB headers ${PROJECT_SOURCE_DIR}/include/*.h)
 
-# find_package(ROOT REQUIRED COMPONENTS RIO Net)
-# include(${ROOT_USE_FILE})
+
+find_package(ROOT REQUIRED COMPONENTS RIO Net)
+include(${ROOT_USE_FILE})
 
 add_executable(simulation simulation.cc ${sources} ${headers})
 target_link_libraries(simulation PRIVATE ${Geant4_LIBRARIES} ${ROOT_LIBRARIES})
