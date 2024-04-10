@@ -4,25 +4,13 @@
 #include <ctime>
 
 primarygenerator::primarygenerator(){
-
-    fparticlegun = new G4ParticleGun(1);
-    int numParticles = 100;
-            // Loop over the number of particles
-    for (int i = 0; i < numParticles; i++) {
-        // Set the particle definition (e.g., gamma ray)
-        fparticlegun->SetParticleDefinition(G4MuonMinus::Definition());
-
-        // Set the particle position (e.g., origin)
-        G4ThreeVector pos(0*m,0*m,0*m);
-        fparticlegun->SetParticlePosition(pos);
-
-        // Set the particle energy (e.g., 1 MeV)
-        fparticlegun->SetParticleEnergy(1*MeV);
-
-        // Set the particle momentum direction (e.g., random direction)
-        G4ThreeVector mom(G4UniformRand(), G4UniformRand(), G4UniformRand());
-        fparticlegun->SetParticleMomentumDirection(mom);
-    }
+    EcoMug gen_muons;
+    gen_muons.SetUseSky();
+    gen_muons.SetSkySize({{15.,15.}});
+    gen_muons.SetSkyCenterPosition({{0.,7.5,0.}});
+    fparticlegun=new G4ParticleGun(1);
+    mu_minus=G4MuonMinus::MuonMinusDefinition();
+    mu_plus=G4MuonPlus::MuonPlusDefinition();
 }
 
 primarygenerator::~primarygenerator(){
@@ -31,5 +19,20 @@ primarygenerator::~primarygenerator(){
    
 void primarygenerator::GeneratePrimaries(G4Event *anEvent)
 {
+    EcoMug gen_muons;
+        gen_muons.Generate();
+        std::array<double,3> muon_position=gen_muons.GetGenerationPosition();
+        G4double muon_p=gen_muons.GetGenerationMomentum();
+        G4double muon_theta=gen_muons.GetGenerationTheta();
+        G4double muon_phi=gen_muons.GetGenerationPhi();
+        G4double muon_charge=gen_muons.GetCharge();
+        fparticlegun->SetParticlePosition(G4ThreeVector(muon_position[0]*mm,muon_position[1]*mm,muon_position[2]*mm));
+        fparticlegun->SetParticleMomentum(G4ParticleMomentum(muon_p*sin(muon_theta)*cos(muon_phi)*GeV,muon_p*sin(muon_theta)*sin(muon_phi)*GeV,muon_p*cos(muon_theta)*GeV));
+        if (gen_muons.GetCharge()<0){
+            fparticlegun->SetParticleDefinition(mu_minus);
+        }else{
+            fparticlegun->SetParticleDefinition(mu_plus);
+        }
+
     fparticlegun->GeneratePrimaryVertex(anEvent);
 }
