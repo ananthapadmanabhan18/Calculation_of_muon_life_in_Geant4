@@ -5,7 +5,7 @@
 primarygenerator::primarygenerator(){
     ecoMug = new EcoMug();
     ecoMug->SetUseSky();
-    ecoMug->SetSkySize({{2*381*cm,2*4572*cm}});
+    ecoMug->SetSkySize({{2*3.81,2*4.572}});
     ecoMug->SetSkyCenterPosition({{0,(1.524/2),0}});
     fparticlegun = new G4ParticleGun(1);
 }

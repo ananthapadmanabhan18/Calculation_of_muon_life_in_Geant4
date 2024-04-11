@@ -40,21 +40,20 @@ G4VPhysicalVolume *detectorconstruction::Construct(){
 
 
     // //Defining the Photon Multiplier Detector
-
-
-
     G4Material* glass = nistManager->FindOrBuildMaterial("G4_GLASS_PLATE");
-    G4double* height_pmt = new G4double(1*cm);
-    G4double* radius_out_pmt = new G4double(4.5*cm);
-    G4double* radius_in_pmt = new G4double(3.5*cm);
+    //Defining the Steel Material
+    G4Material* steel = nistManager->FindOrBuildMaterial("G4_STAINLESS-STEEL");
+    G4double* height_pmt_support_1 = new G4double(0.5*cm);
+    G4double* radius_out_pmt_support_1 = new G4double(4.5*cm);
+    G4double* radius_in_pmt_support_1 = new G4double(4*cm);
     G4RotationMatrix* rot = new G4RotationMatrix();
     rot->rotateX(90*deg);
-    G4Tubs* pmt = new G4Tubs("pmt", *radius_in_pmt, *radius_out_pmt, *height_pmt, 0, 2*M_PI);
-    logic_pmt = new G4LogicalVolume(pmt, glass, "logical_pmt");
-    new G4PVPlacement(rot, G4ThreeVector(0,7.75*cm,0), logic_pmt, "physical_pmt", logicworld, false, 0, checkoverlap);
-    G4VisAttributes* vis_pmt = new G4VisAttributes(G4Colour(0.5, 0.5, 0.5, 0.5));
-    vis_pmt->SetForceSolid(true);
-    logic_pmt->SetVisAttributes(vis_pmt);
+    G4Tubs* pmt_support_1 = new G4Tubs("pmt", *radius_in_pmt_support_1, *radius_out_pmt_support_1, *height_pmt_support_1, 0, 2*M_PI);
+    logic_pmt_support_1 = new G4LogicalVolume(pmt_support_1, steel, "logical_pmt");
+    new G4PVPlacement(rot, G4ThreeVector(0,7.75*cm,0), logic_pmt_support_1, "physical_pmt", logicworld, false, 0, checkoverlap);
+    G4VisAttributes* vis_pmt_support_1 = new G4VisAttributes(G4Colour(0.5, 0.5, 0.5, 0.5));
+    vis_pmt_support_1->SetForceSolid(true);
+    logic_pmt_support_1->SetVisAttributes(vis_pmt_support_1);
 
 
     return physicalworld;
@@ -63,7 +62,7 @@ G4VPhysicalVolume *detectorconstruction::Construct(){
 
 void detectorconstruction::ConstructSDandField(){
     sensitivedetector *sensdet = new sensitivedetector("SD");
-    logic_pmt->SetSensitiveDetector(sensdet);
+    logic_pmt_support_1->SetSensitiveDetector(sensdet);
 }
 
 
