@@ -13,7 +13,7 @@ G4VPhysicalVolume *detectorconstruction::Construct(){
     G4bool checkoverlap = true;
 
 
-    // //Defining World Volume
+    //Defining World Volume
     G4Material* air = nistManager->FindOrBuildMaterial("G4_AIR");
     G4MaterialPropertiesTable *mptWorld = new G4MaterialPropertiesTable();
     mptWorld->AddProperty("RINDEX", energy, rindexWorld, 2);  
@@ -23,10 +23,10 @@ G4VPhysicalVolume *detectorconstruction::Construct(){
     G4VPhysicalVolume* physicalworld = new G4PVPlacement(nullptr, G4ThreeVector(0,0,0), logicworld, "physicalworld", nullptr, false, 0, checkoverlap);
     G4VisAttributes* WW = new G4VisAttributes(G4Colour(0.85, 0.85, 1, 0));
     // WW->SetForceSolid(true);    
-    // // logicworld->SetVisAttributes(WW);
+    // logicworld->SetVisAttributes(WW);
 
 
-    // //Defining the Scintillator
+    //Defining the Scintillator
     G4Material* Scintillator_mat = nistManager->FindOrBuildMaterial("G4_PLASTIC_SC_VINYLTOLUENE");
     G4MaterialPropertiesTable *scintillator_mpt = new G4MaterialPropertiesTable();
     scintillator_mpt->AddProperty("RINDEX", energy, rindexSchintillation, 2);
@@ -73,11 +73,3 @@ void detectorconstruction::ConstructSDandField(){
     sensitivedetector *sensdet = new sensitivedetector("SD");
     logic_pmt_support_1->SetSensitiveDetector(sensdet);
 }
-
-
-
-
-
-
-
-

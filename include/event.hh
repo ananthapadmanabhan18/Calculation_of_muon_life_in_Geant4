@@ -18,9 +18,11 @@ class eventaction : public G4UserEventAction{
 
 
         void AddEdep(G4double edep){fEdep += edep;}
+        void AddPhotonCount(){PhotonCount++;}
 
     private:
         G4double fEdep;
+        G4int PhotonCount;
 };
 
 
