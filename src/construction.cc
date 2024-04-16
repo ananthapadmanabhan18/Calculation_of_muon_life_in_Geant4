@@ -38,6 +38,15 @@ G4VPhysicalVolume *detectorconstruction::Construct(){
     visScint->SetForceSolid(true);
     logicScintillator->SetVisAttributes(visScint);
 
+    // G4double reflectivity = 0.5;    
+    // G4double photonEnergySteel[] = {2.034*eV, 4.136*eV};
+    // G4double reflectivitySteel[] = {reflectivity, reflectivity};
+    // steelMPT->AddProperty("REFLECTIVITY", photonEnergySteel, reflectivitySteel, 2);
+    // steel->SetMaterialPropertiesTable(steelMPT);
+
+
+
+
 
     // //Defining the Photon Multiplier Detector
     G4Material* glass = nistManager->FindOrBuildMaterial("G4_GLASS_PLATE");
@@ -50,7 +59,7 @@ G4VPhysicalVolume *detectorconstruction::Construct(){
     rot->rotateX(90*deg);
     G4Tubs* pmt_support_1 = new G4Tubs("pmt", *radius_in_pmt_support_1, *radius_out_pmt_support_1, *height_pmt_support_1, 0, 2*M_PI);
     logic_pmt_support_1 = new G4LogicalVolume(pmt_support_1, steel, "logical_pmt");
-    new G4PVPlacement(rot, G4ThreeVector(0,7.75*cm,0), logic_pmt_support_1, "physical_pmt", logicworld, false, 0, checkoverlap);
+    new G4PVPlacement(rot, G4ThreeVector(0,7.75*cm+5*cm,0), logic_pmt_support_1, "physical_pmt", logicworld, false, 0, checkoverlap);
     G4VisAttributes* vis_pmt_support_1 = new G4VisAttributes(G4Colour(0.5, 0.5, 0.5, 0.5));
     vis_pmt_support_1->SetForceSolid(true);
     logic_pmt_support_1->SetVisAttributes(vis_pmt_support_1);
