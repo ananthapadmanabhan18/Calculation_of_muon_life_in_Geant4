@@ -9,7 +9,7 @@ runaction::~runaction(){}
 void runaction::BeginOfRunAction(const G4Run*){
 
     G4AnalysisManager*man = G4AnalysisManager::Instance();
-    man->OpenFile("D:\\Google_Drive\\Files\\My Drive\\Study_Stuff\\Projects\\APSARA_Project\\Simulations-2\\Outputs\\output_final.root");
+    man->OpenFile("final.root");
     G4int num = man->GetNofNtuples();
     if(num==0){
     man->CreateNtuple("Energy","Energy");

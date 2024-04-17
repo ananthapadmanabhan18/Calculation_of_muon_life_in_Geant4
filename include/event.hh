@@ -17,10 +17,10 @@ class eventaction : public G4UserEventAction{
         virtual void EndOfEventAction(const G4Event*);
 
 
-        void AddEdep(G4double edep){fEdep += edep;}
+        void Addflux(){photonflux++;}
 
     private:
-        G4double fEdep;
+        G4double photonflux ;
 };
 
 #endif
