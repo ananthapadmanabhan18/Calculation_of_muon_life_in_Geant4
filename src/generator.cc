@@ -36,7 +36,7 @@ void primarygenerator::GeneratePrimaries(G4Event *anEvent)
 
     // Setting the Position
     std::array<G4double, 3> position = ecoMug->GetGenerationPosition();
-    G4ThreeVector pos(position[0]*mm, position[1]*mm, position[2]*mm);
+    G4ThreeVector pos(position[0]*mm, position[2]*mm, position[1]*mm);
     fparticlegun->SetParticlePosition(pos);
     G4cout << "Position: " << pos << G4endl;
 
@@ -48,8 +48,10 @@ void primarygenerator::GeneratePrimaries(G4Event *anEvent)
     G4cout << "Momentum: " << momentum << G4endl;
     G4cout << "Theta: " << theta << G4endl;
     G4cout << "Phi: " << phi << G4endl;
-    G4ThreeVector mom(momentum*sin(theta)*cos(phi)*GeV, momentum*sin(theta)*sin(phi)*GeV, momentum*cos(theta)*GeV);
+    G4ThreeVector mom(momentum*sin(theta)*cos(phi)*GeV, momentum*cos(theta)*GeV, momentum*sin(theta)*sin(phi)*GeV);
     fparticlegun->SetParticleMomentum(mom);
+
+
 
     fparticlegun->GeneratePrimaryVertex(anEvent);
 }

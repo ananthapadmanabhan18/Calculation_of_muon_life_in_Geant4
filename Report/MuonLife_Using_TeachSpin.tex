@@ -263,16 +263,123 @@ So we will be able to detect approximately 10\% of all the muons that enter the 
 
 
 
+\subsection{Cherenkov Radiation}
+
+Cherenkov radiation is a phenomenon that occurs when a charged particle passes through a dielectric medium at a speed greater than the phase velocity of light in that medium. As the particle moves through the medium, it polarizes the atoms or molecules, causing them to emit electromagnetic radiation in the form of photons. This emitted radiation is known as Cherenkov radiation. It appears as a cone of light with a characteristic blue color, and its intensity and angle of emission depend on the velocity and charge of the particle. 
+
+
+The light emitted from the process forms a cone inside the radiator. The angle of the cone is given by:
+\begin{equation}
+    \cos(\theta) = \frac{1}{\beta n}
+\end{equation}
+
+
+Where n is the refractive index of the medium and $\beta$ is the velocity of the particle in units of the speed of light.
+
+The illustration of the Cherenkov radiation is shown in the figure-\ref{cherenkov}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5]{Images/cherenkovcone.png}
+    \caption{Illustration of Cherenkov Radiation}
+    \label{cherenkov}
+\end{figure}
+
+
+
+\subsection{Fermi Coupling Constant}
+
+The Fermi constant is a measure of the strength of the weak force.  Its measurement is $1.435 \times 10^{-36}J/m^3$. Measurements of the muon lifetime, which are inversely proportional to the square of GF (when ignoring the muon mass against the mass of the W boson) provide the most accurate experimental estimate of the Fermi coupling constant. The relationship between the muon lifetime $\tau$ and GF is expressed by the following equation:
+ \begin{equation}
+     \tau=\frac{192*\pi^3*\hbar^7}{G_f^2*m_\mu^5*c^4}
+ \end{equation}
+where, $\tau$ is the mean lifetime of the muon, GF is the Fermi coupling constant, $m_\mu$ is the mass of the muon and, c is the speed of light.
+\subsection{GEANT4 Toolkit}
+Geant4 is a toolkit for the simulation of the passage of particles through matter. Using Geant4 tool, we have simulated both of our experiments and compared the results.
+
+
+
+
+
+
 \subsection{Geant4 Simulations}
 
 Geant4 is a powerful toolkit developed by CERN for simulating the passage of particles through matter. Widely used in various fields including high-energy physics, medical physics, and space science, Geant4 offers a comprehensive set of functionalities for modeling complex geometries, particle interactions, and detector responses. Its versatility allows researchers to simulate a wide range of experimental setups accurately, aiding in the design, optimization, and analysis of experiments. With its open-source nature and continuous development, Geant4 remains at the forefront of particle transport simulations, facilitating groundbreaking discoveries and advancements in numerous scientific disciplines.
 
 The Simulations with an almost same geometry as that is present in the lab has been done in the Geant4 and compared with the results obtained from the teachspin setup. The Geant4 simulations were done with the same geometry as that of the teachspin setup and the data was analyzed using the ROOT libraries.This is done for both the setup with the old scintillator detector and the new Cherenkov detector.
 
-
+The simulation of the cosmic muons and showers has been done using the EcoMug Standalone header file in C/C++. The Whole software is based on Monte Carlo Simulations and the data obtained from the simulations are analyzed using the ROOT libraries. The data obtained from the simulations are compared with the data obtained from the teachspin setup and the results are discussed in the later sections.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{\label{expsetup}Experimental Setup and Procedure }
+
+In the Setup of the Experiment, we have used two methods of detection of the muons. One is with the scintillator detector and the other is with the Cherenkov detector. The Setup with the scitillation is already built and we just had to use the Teachspin set up and the software provided by them to collect the data. The setup with the Cherenkov detector is built by us and the data is collected using the same Teachspin software.
+
+\subsection{Scintillation Detector}
+
+The Scintillation detector that we used consist of a large block of Plasric Sciltillator of Size $26.5cm \times 15cm \times 26.5cm$. This Detector is covered with a white reflective surface which is then covered with a black tape to prevent the light from escaping. The Photomultiplier tube is placed at the top of the detector and is connected to the computer using a USB cable. A high voltage supply is connected to the PMT to provide the necessary voltage for the PMT to work.
+
+\subsection{Photomultiplier Tube}
+
+The Photomultiplier tube is a device that converts the light produced by the scintillator into an electrical signal. The PMT consists of a photocathode, a series of dynodes, and an anode. When a photon strikes the photocathode, it releases an electron, which is then accelerated towards the first dynode. The electron is multiplied at each dynode, resulting in a cascade of electrons that are collected at the anode, producing an electrical signal proportional to the intensity of the light.
+The working of the scintillator tube is shown in the figure-\ref{pmt}.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = \columnwidth]{Images/pmtsetup.png}
+    \caption{Illustration of the working of the Photomultiplier Tube.source:}
+    \label{pmt}
+\end{figure}
+
+The setup of the scintillator along with the PMT is shown in the figure-\ref{scintsetup}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = \columnwidth]{Images/scintsetup.png}
+    \caption{Setup of the experiment that uses the scintillator detector.}
+    \label{scintsetup}
+\end{figure}
+
+
+\subsection{The Teachspin Setup}
+The complete instrument has three hardware components: a detector, readout electronics and user-supplied personal computer (PC). Control and data acquisition software are also included.
+
+The output from the PMT is fed into a 2 stage amplifier circuit, which amplifies the signal so that it has sufficient voltage to be considered as a signal by the discriminator. We feed the signal from the amplifier to a discriminator circuit, which has a threshold voltage. The number
+of muon readings decreases with increase with threshold
+voltage since it reject pulses below the specified threshold level. Since the PMT signal is in the negative region, the discriminator voltage applied is also negative.
+
+The circuit diagram for the teachspin setup is shoen in the figure-\ref{circuit}.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = \columnwidth]{Images/circuit.png}
+    \caption{The circuit diagram of the teachspin setup.}
+    \label{circuit}
+\end{figure}
+
+\subsection{The Cherenkov Detector}
+
+In this part we replaced the scintillator with a cherenkov radiator. The Cherenkov radiator in our experiment was distilled water. For the setup we have brought a milton flask with a reflective coating inside. The PMT is placed at the top of the flask and the flask is filled with distilled water. The PMT is connected to the computer using a USB cable and the high voltage supply is connected to the PMT to provide the necessary voltage for the PMT to work. The PMT is then connected to computer via the Teachspin setup to collect the data. The setup that we made is shown in the figure-\ref{cherenkovsetup}.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = \columnwidth]{Images/cherenkovsetup.png}
+    \caption{The modified setup of the experiment that uses the Cherenkov detector.}
+    \label{cherenkovsetup}
+\end{figure}
+
+
+\subsection{The Procedure and the Working of the Setups}
+
+In both the setups the working of the setup is the same. The cosmic muons enter the detector and the PMT detects the light produced by the scintillator or the Cherenkov radiator. The PMT converts the light into an electrical signal which is then fed into the computer. The computer records the time at which the muon enters the detector and the time at which the muon decays.
+
+The measureent of the time of decay is done by triggering the timers present in the Teachspin setup. When a high energy muon enters the scintillator/cherenkov a light cone is produced. It uis detected by the PMT which produces a signal. This signal triggers a timer and it starts the timer. There are two reasons for the timer to stop:
+\begin{enumerate}
+    \item The muon decays and the light produced by the decay is detected by the PMT. This signal stops the timer.
+    \item If there is no signal for 40 microseconds. The timer automatically stops.
+\end{enumerate}
+
+In the 1st case. The time is registered and is filled into a histogram . if the timer reaches the mark of 40 microseconds, the timer stops and the time is not registered. This is done to prevent the registering of another muon that may enter the detector and creates random signals.
+Also, the probability of 2 muons enetering the detector within this 200 microsecond time frame is very low. So, for very large number of data points, we can see safely ignore the case where a second muon stops the timer. Its been calculated that the average time interval between two muons is 200 microseconds.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{\label{observations}Observations and Data}
