@@ -26,6 +26,36 @@ G4VPhysicalVolume *detectorconstruction::Construct(){
     // logicworld->SetVisAttributes(WW);
 
 
+
+
+
+
+    // G4double reflectivity = 0.7;    
+    // G4double photonEnergy[] = {2.034*eV, 4.136*eV};
+    // G4double reflectivityTape[] = {reflectivity, reflectivity};
+    // tapeMPT->AddProperty("REFLECTIVITY", photonEnergy, reflectivitySteel, 2);
+    // Scintillator_mat_tape->SetMaterialPropertiesTable(tapeMPT);
+
+    //Defining the Scintillator covering tape
+    G4Material* Scintillator_mat_tape = nistManager->FindOrBuildMaterial("G4_PLASTIC_SC_VINYLTOLUENE");
+    G4double reflectivity = 1;    
+    G4double photonEnergy[2] = {2.034*eV, 4.136*eV};
+    G4double reflectivityTape[2] = {reflectivity, reflectivity};
+    G4MaterialPropertiesTable *tape_mpt = new G4MaterialPropertiesTable();
+    tape_mpt->AddProperty("REFLECTIVITY", photonEnergy, reflectivityTape, 2);
+    tape_mpt->AddProperty("RINDEX", photonEnergy, rindexTape, 2);
+    Scintillator_mat_tape->SetMaterialPropertiesTable(tape_mpt);
+    G4Box* Scintillator_tape = new G4Box("Scintillator_tape", 13.25*cm+0.25*cm, 7.25*cm+0.25*cm, 13.25*cm+0.25*cm);
+    G4LogicalVolume* logicScintillator_tape = new G4LogicalVolume(Scintillator_tape, Scintillator_mat_tape, "logicalScintillator_tape");
+    new G4PVPlacement(nullptr, G4ThreeVector(0,0,0), logicScintillator_tape, "physicalScintillator_tape", logicworld, false, 0, checkoverlap);
+    // G4VisAttributes* visScint = new G4VisAttributes(G4Colour(0.5, 0.5, 0.5, 0.5));
+    // visScint->SetForceSolid(true);
+
+
+
+
+
+
     //Defining the Scintillator
     G4Material* Scintillator_mat = nistManager->FindOrBuildMaterial("G4_PLASTIC_SC_VINYLTOLUENE");
     G4MaterialPropertiesTable *scintillator_mpt = new G4MaterialPropertiesTable();
@@ -33,16 +63,12 @@ G4VPhysicalVolume *detectorconstruction::Construct(){
     Scintillator_mat->SetMaterialPropertiesTable(scintillator_mpt);
     G4Box* Scintillator = new G4Box("Scintillator", 13.25*cm, 7.25*cm, 13.25*cm);
     G4LogicalVolume* logicScintillator = new G4LogicalVolume(Scintillator, Scintillator_mat, "logicalScintillator");
-    new G4PVPlacement(nullptr, G4ThreeVector(0,0,0), logicScintillator, "physicalScintillator", logicworld, false, 0, checkoverlap);
+    new G4PVPlacement(nullptr, G4ThreeVector(0,0,0), logicScintillator, "physicalScintillator", logicScintillator_tape, false, 0, checkoverlap);
     G4VisAttributes* visScint = new G4VisAttributes(G4Colour(0.5, 0.5, 0.5, 0.5));
     visScint->SetForceSolid(true);
     logicScintillator->SetVisAttributes(visScint);
 
-    // G4double reflectivity = 0.5;    
-    // G4double photonEnergySteel[] = {2.034*eV, 4.136*eV};
-    // G4double reflectivitySteel[] = {reflectivity, reflectivity};
-    // steelMPT->AddProperty("REFLECTIVITY", photonEnergySteel, reflectivitySteel, 2);
-    // steel->SetMaterialPropertiesTable(steelMPT);
+
 
 
 

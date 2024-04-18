@@ -5,8 +5,8 @@
 primarygenerator::primarygenerator(){
     ecoMug = new EcoMug();
     ecoMug->SetUseSky();
-    ecoMug->SetSkySize({{2*3.81,2*4.572}});
-    ecoMug->SetSkyCenterPosition({{0,(1.524/2),0}});
+    ecoMug->SetSkySize({{2*3.81*m,2*4.572*m}});
+    ecoMug->SetSkyCenterPosition({{0,(1.524/2)*m,0}});
     fparticlegun = new G4ParticleGun(1);
 }
 
@@ -37,7 +37,8 @@ void primarygenerator::GeneratePrimaries(G4Event *anEvent)
     // Setting the Position
     std::array<G4double, 3> position = ecoMug->GetGenerationPosition();
     G4ThreeVector pos(position[0]*mm, position[2]*mm, position[1]*mm);
-    fparticlegun->SetParticlePosition(pos);
+    G4ThreeVector trial_pos(1*m,0,0);
+    fparticlegun->SetParticlePosition(trial_pos);
     G4cout << "Position: " << pos << G4endl;
 
 
@@ -49,7 +50,8 @@ void primarygenerator::GeneratePrimaries(G4Event *anEvent)
     G4cout << "Theta: " << theta << G4endl;
     G4cout << "Phi: " << phi << G4endl;
     G4ThreeVector mom(momentum*sin(theta)*cos(phi)*GeV, momentum*cos(theta)*GeV, momentum*sin(theta)*sin(phi)*GeV);
-    fparticlegun->SetParticleMomentum(mom);
+    G4ThreeVector trial_mom(-1*GeV,0,0*1*GeV);
+    fparticlegun->SetParticleMomentum(trial_mom);
 
 
 
