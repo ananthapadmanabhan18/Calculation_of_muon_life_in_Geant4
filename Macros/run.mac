@@ -4,4 +4,4 @@
 /tracking/verbose 0
 /run/numberOfThreads 1
 /run/initialize
-/run/beamOn 100
+/run/beamOn 1

@@ -13,6 +13,7 @@
 #include "G4RootAnalysisManager.hh"
 #include "Randomize.hh"
 #include "G4GeneralParticleSource.hh"
+#include "G4OpticalPhoton.hh"
 #include <array>
 #include <fstream>
 #include <iostream>

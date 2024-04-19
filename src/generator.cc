@@ -22,17 +22,22 @@ void primarygenerator::GeneratePrimaries(G4Event *anEvent)
     //Setting the Particle according to charge
     int particle_charge = ecoMug->GetCharge();
     if(particle_charge == 1){
-        fparticlegun->SetParticleDefinition(G4MuonPlus::Definition());
+        // fparticlegun->SetParticleDefinition(G4MuonPlus::Definition());
+        fparticlegun->SetParticleDefinition(G4OpticalPhoton::Definition());
         G4cout << "Muon+" << G4endl;
     }
     else if(particle_charge == -1){
-        fparticlegun->SetParticleDefinition(G4MuonMinus::Definition());
+        // fparticlegun->SetParticleDefinition(G4MuonMinus::Definition());
+        fparticlegun->SetParticleDefinition(G4OpticalPhoton::Definition());
         G4cout << "Muon-" << G4endl;
     }
     else{
         G4cout << "Error: Particle charge not recognized" << G4endl;
     }
 
+    // Setting polarization in x diection
+    G4ThreeVector pol(1,0,0);
+    fparticlegun->SetParticlePolarization(pol);
 
     // Setting the Position
     std::array<G4double, 3> position = ecoMug->GetGenerationPosition();
@@ -50,7 +55,7 @@ void primarygenerator::GeneratePrimaries(G4Event *anEvent)
     G4cout << "Theta: " << theta << G4endl;
     G4cout << "Phi: " << phi << G4endl;
     G4ThreeVector mom(momentum*sin(theta)*cos(phi)*GeV, momentum*cos(theta)*GeV, momentum*sin(theta)*sin(phi)*GeV);
-    G4ThreeVector trial_mom(-1*GeV,0,0*1*GeV);
+    G4ThreeVector trial_mom(-1*GeV,0.01*GeV,0.01*GeV);
     fparticlegun->SetParticleMomentum(trial_mom);
 
 

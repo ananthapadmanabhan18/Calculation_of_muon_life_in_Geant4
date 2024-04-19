@@ -382,11 +382,37 @@ In the 1st case. The time is registered and is filled into a histogram . if the 
 Also, the probability of 2 muons enetering the detector within this 200 microsecond time frame is very low. So, for very large number of data points, we can see safely ignore the case where a second muon stops the timer. Its been calculated that the average time interval between two muons is 200 microseconds.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{\label{simobs}Performance and Geometry Simulations using Geant4}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{\label{observations}Observations and Data}
+
+In this section, we will discuss about the collected data using the scintillator and the Cherenkov detector. Using the Scintillator setup, we took data with different Operating vltages and different threshold voltages.
+
+
+\subsubsection{Data from the Scintillator Detector}
+The collected data for the scintilation detector is fit in python-\cite{python} and ROOT-\cite{ROOT} to get the mean life of the muons. The plot of the fitted histogram is shown in the figure-\ref{scintplots}.
+\begin{figure*}
+    \centering
+    \includegraphics[width = 2\columnwidth]{Images/scint_plots.png}
+    \caption{THe fitted plots of the data collected using the scintillator detector.}
+    \label{scintplots}
+\end{figure*}
+
+\subsection{Data from the Cherenkov Detector}
+
+Due to lack of time, we couldnot get eneough data for the confirmation of the muon detection. Only one set of Data is taken with an operatin voltage of 750V and a threshold voltage of 100mV. The data is shown in the figure-\ref{cherenkovplot}.
+
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{\label{dataanalysis}Data analysis}
+
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{\label{error}Error Analysis}

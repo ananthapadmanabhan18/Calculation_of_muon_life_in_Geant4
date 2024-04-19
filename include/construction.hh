@@ -22,6 +22,9 @@
 #include "G4RotationMatrix.hh"
 #include "detector.hh"
 #include "G4GDMLParser.hh"
+#include "G4Color.hh"
+#include "G4LogicalSkinSurface.hh"
+#include "G4OpticalSurface.hh"
 
 
 
@@ -35,15 +38,18 @@ class detectorconstruction : public G4VUserDetectorConstruction
 
     private:
         virtual void ConstructSDandField();
-        G4LogicalVolume* logic_pmt_support_1; 
-        G4double energy[2] = {1.239841939*eV/0.9, 1.239841939*eV/0.2};
+        G4double energy[2] = {2.034*eV, 4.136*eV};
 
-        G4double rindexWorld[2] = {1.0, 1.0};
-        // RINDEX of scintillator
-        G4double rindexSchintillation[2] = {1.1, 1.1};  
-        // RINDEX of tape
-        G4double rindexTape[2] = {0, 0};
-        G4LogicalVolume* logic_world;
+        G4double n_world[2] = {1.0, 1.0};
+
+        G4double n_tape[2] = {1.1, 1.1};
+        G4double R_tape[2] = {0.9, 0.9};
+
+        G4double n_scint[2] = {1.2, 1.2};
+        G4double R_scint[2] = {0.9, 0.9};
+
+        // G4OpticalSurface* opticalSurface;
+
      
 };
 
