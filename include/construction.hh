@@ -37,6 +37,12 @@ class detectorconstruction : public G4VUserDetectorConstruction
 
     private:
         virtual void ConstructSDandField();
+        G4double photonEnergy[2] = {2.034*eV, 4.136*eV};
+        G4double rindex_water[2] = {1.33, 1.33};
+        G4double rindex_world[2] = {1.0, 1.0};
+        G4double rindex_steel[2] = {0, 0};
+        G4double rindex_plastic[2] = {0, 0};
+        G4double reflectivity_steel = 0.7;
         G4LogicalVolume* logic_pmt;
 
 };
