@@ -289,20 +289,17 @@ The illustration of the Cherenkov radiation is shown in the figure-\ref{cherenko
 
 \subsection{Fermi Coupling Constant}
 
-The Fermi constant is a measure of the strength of the weak force.  Its measurement is $1.435 \times 10^{-36}J/m^3$. Measurements of the muon lifetime, which are inversely proportional to the square of GF (when ignoring the muon mass against the mass of the W boson) provide the most accurate experimental estimate of the Fermi coupling constant. The relationship between the muon lifetime $\tau$ and GF is expressed by the following equation:
+The Fermi constant is a measure of the strength of the weak force.  Its measurement is $1.166 \times 10^{-5}GeV^{-2}$. Measurements of the muon lifetime, which are inversely proportional to the square of GF (when ignoring the muon mass against the mass of the W boson) provide the most accurate experimental estimate of the Fermi coupling constant. The relationship between the muon lifetime $\tau$ and GF is expressed by the following equation:
  \begin{equation}
      \tau=\frac{192*\pi^3*\hbar^7}{G_f^2*m_\mu^5*c^4}
  \end{equation}
 where, $\tau$ is the mean lifetime of the muon, GF is the Fermi coupling constant, $m_\mu$ is the mass of the muon and, c is the speed of light.
+
+
+
+
+
 \subsection{GEANT4 Toolkit}
-Geant4 is a toolkit for the simulation of the passage of particles through matter. Using Geant4 tool, we have simulated both of our experiments and compared the results.
-
-
-
-
-
-
-\subsection{Geant4 Simulations}
 
 Geant4 is a powerful toolkit developed by CERN for simulating the passage of particles through matter. Widely used in various fields including high-energy physics, medical physics, and space science, Geant4 offers a comprehensive set of functionalities for modeling complex geometries, particle interactions, and detector responses. Its versatility allows researchers to simulate a wide range of experimental setups accurately, aiding in the design, optimization, and analysis of experiments. With its open-source nature and continuous development, Geant4 remains at the forefront of particle transport simulations, facilitating groundbreaking discoveries and advancements in numerous scientific disciplines.
 
@@ -390,36 +387,64 @@ The exact geometry of the setup that is present in the lab is simutaled in the G
 \begin{figure}[H]
     \centering
     \includegraphics[width = \columnwidth]{Images/scint_sim_1.png}
-    \caption{The Simulation geometry of the scintillator detector.}
+    \caption{The Simulation geometry of the scintillator detector.\cite{agostinelli2003geant4}}
     \label{scintgeo}
 \end{figure}
 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width = \columnwidth]{Images/scint_sim_1.png}
-    \caption{The Simulation geometry of the Cherenkov radiator}
+    \includegraphics[width = \columnwidth]{Images/cher_sim_1.jpeg}
+    \caption{The Simulation geometry of the Cherenkov radiator\cite{agostinelli2003geant4}}
     \label{chergeo}
 \end{figure}
 
-The simulation of the cosic muons and showers are simulated by the EcoMug Standalone header file in C/C++. The data obtained, that is momentum and initial position of the muons are give an input to the ParticleGun of the Geant4 and the 100000 runs are made. Since it takes a lot of GPU power to render the simulation image of 100000 runs. A single run for demonstration is shown in the figure-\ref{sim_run}.
+The simulation of the cosic muons and showers are simulated by the EcoMug Standalone header file in C/C++. The data obtained, that is momentum and initial position of the muons are give an input to the ParticleGun of the Geant4 and the 100000 runs are made. Since it takes a lot of GPU power to render the simulation image of 100000 runs. A single run for demonstration is shown in the figure-\ref{sim_run} and \ref{sim_cher}.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width = \columnwidth]{Images/scint_sim_2.png}
-    \caption{The production of the light cone in the scintillator due to the cosmic muons and its decay. Here the Blue line represents the cosmic muon plus and the green lines represent the optical photons created in the scintillator. in the 3D image the decayed Electron can also be observed.}
+    \caption{The production of the light cone in the scintillator due to the cosmic muons and its decay. Here the Blue line represents the cosmic muon plus and the green lines represent the optical photons created in the scintillator. in the 3D image the decayed Electron can also be observed. Reflectivity has been disabled for demonstrtion purposes.-\cite{agostinelli2003geant4}}
     \label{sim_run}
 \end{figure}
 
 
-In the simulations, the main aim was to compare the muon flux for both the detectors. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = \columnwidth]{Images/cher_sim_2.jpeg}
+    \caption{The production of the light cone in the cherenkov radiator due to the cosmic muons and its decay. Here the Blue line represents the cosmic muon plus and the green lines represent the optical photons created in the scintillator. in the 3D image the decayed Electron can also be observed. Reflectivity has been disabled for demonstrtion purposes.-\cite{agostinelli2003geant4} }
+    \label{sim_cher}
+\end{figure}
 
+
+In the simulations, the main aim was to compare the muon flux for both the detectors. 
+The Muon flux is calculated by running the Loop over all the events in a run and counting the number of muons that enter the detector.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{\label{observations}Observations and Data}
 
 In this section, we will discuss about the collected data using the scintillator and the Cherenkov detector. Using the Scintillator setup, we took data with different Operating vltages and different threshold voltages.
+
+
+\subsection{The Pulses Obtained from the Scintillator Detector}
+
+The Pulse of the signal that is obtained by using the scintillator detector is shown in the figure-\ref{pulse_dir_scint} and the one using the Cherenkov detector is shown in the figure-\ref{pulse_dir_cher}.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = \columnwidth]{Images/Pulse_amp.JPG}
+    \caption{The Signal that is obtained from the PMT (amplified) by using the scnitillator detector.}
+    \label{pulse_dir_scint}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = \columnwidth]{Images/pulse_amp_cher.jpeg}
+    \caption{The Signal that is obtained from the (PMT after amplification) by using the cherenkov radiator.}
+    \label{pulse_dir_cher}
+\end{figure}
+
 
 
 \subsection{Data from the Scintillator Detector}
@@ -441,6 +466,26 @@ Due to lack of time, we couldnot get eneough data for the confirmation of the mu
     \label{cherenkovplot}
 \end{figure}
 
+\subsection{Data from the Geant4 Simulations}
+
+From the simulations we can see that the amount of muons entering the scintillator is significantly lesser than the amount of muons entering the cherenkov radiator. The total number of muons registered in the scintillaor is around 19000 for 100000 runs and for the same amount of runs, the number of muons registered in the cherenkov radiator is around less than 2000. This can be seen in the distribution of muons in the scintillator and cherenkov radiator which is shown in the figure-\ref{sim_scint_plot} and -\ref{sim_cher_plot} respectievely.
+
+The muon count distribution is shown in the figure-\ref{sim_scint_plot}.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = \columnwidth]{Images/scint_muon_dist.png}
+    \caption{The Muon Distribution in the scintillator detector from GEANT4 -\cite{agostinelli2003geant4}}
+    \label{sim_scint_plot}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = \columnwidth]{Images/cher_muon_dist.png}
+    \caption{The Muon Distribution in the cherenlov radiator from GEANT4 -\cite{agostinelli2003geant4}}
+    \label{sim_cher_plot}
+\end{figure}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -448,10 +493,10 @@ Due to lack of time, we couldnot get eneough data for the confirmation of the mu
 \section{\label{dataanalysis}Data analysis}
 
 
-The plots are shown in the previous section. The fitting is done in Python and ROOT. The Results after fitting is tabulated in the table-\ref{scint_res}.
+The plots are shown in the previous section. The fitting is done in Python and ROOT. The Results after fitting is tabulated in the table-\ref{scint_res}. The most accurate distribution of the decay time is when the operating voltage is 750V. So the mean lifes obtained from it are averaged out and the error is calculated. The mean life of the muons is calculated as 2096 ns with an error of 40 ns.
 
 
-\begin{table*}[h]
+\begin{table*}[ht]
     \centering
     \resizebox{2\columnwidth}{!}{%
     \begin{tabular}{|c|ccc|ccc|ccc|}
@@ -470,6 +515,20 @@ The plots are shown in the previous section. The fitting is done in Python and R
 For the cherenkov radiator, as seen in the figure-\ref{cherenkovplot}
 The value of the Muon lifetime is obtained as 2398 ns with an error of 237 ns. The percentage error is 9.8\%.
 
+
+\subsection{Calculation of fermi coupling constant}
+
+The Fermi coupling constant is calculated using the formula:
+\begin{equation}
+    G_f = \sqrt{\frac{192*\pi^3*\hbar^7}{\tau*m_{\mu}^5*c^4}}
+\end{equation}
+
+using the value of the mean life of the muon as 2096 ns, the Fermi coupling constant is calculated as:
+\begin{equation}
+    \frac{G_f}{(hc)^3} = 4.647 \times 10^{14} J^{-2} = 1.189 \times 10^{-5} GeV^{-2} 
+\end{equation}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{\label{error}Error Analysis}
@@ -483,11 +542,34 @@ so the Muon life time is given by:
 with a percentage error of 1.9\%.
 
 
-Now for the 
+Now for the cherenkov radiator, we were able to get onlu one of the reading for a time period of 75 hours. The error in the mean life of the muons is calculated by the expnential fitting which give the mean life as:
+\begin{equation}
+    \tau = 2398 \pm 237 ns
+\end{equation}
+with a percentage error of 9.8\%.
+
+
+The percentage error in the fermi coupling constant is half of that of the error in the mean life of the muons. So, the Fermi coupling constant is given by:
+
+\begin{equation}
+    \delta \frac{G_f}{(hc)^3} = \frac{G_f}{(hc)^3} \times \frac{1}{2} \times \frac{\delta \tau}{\tau} = 0.011 \times 10^{-5} GeV^{-2}
+\end{equation}
+
+so the Fermi coupling constant is given by:
+\begin{equation}
+    G_f = 1.189 \pm 0.011 \times 10^{-5} GeV^{-2}
+\end{equation}
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{\label{results}Results}
+
+The mean life of the muons calculated from the scintillation detector is 2096 ns with an error of 40 ns. The mean life of the muons calculated from the cherenkov radiator is 2398 ns with an error of 237 ns. The Fermi coupling constant is calculated as $1.189 \pm 0.011 \times 10^{-5} GeV^{-2}$.
+
+
+Also, from the simulations, it is observed that there is not eneough data to confirm that the detected pulses and the distribution is of muons. Also we were able to find that the muons counts are so low.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
