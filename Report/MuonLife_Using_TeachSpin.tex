@@ -129,7 +129,7 @@ Dr. Gunda Santosh Babu}
     \large{\textbf{CALCULATION OF MUON LIFE TIME USING SCINTILLATOR DETECTOR \\ AND CHERENKOV RADIATION WITH TEACHSPIN SETUP}}
 \end{center}
 \begin{abstract}
-    This experiment aimed to determine the mean life of muons using the teachspin setup. Initially, data was collected with a scintillation detector connected to a PMT using teachspin software. Later, the setup was modified, replacing the scintillation detector with a Cherenkov detector connected to the PMT. Data was collected using the same software, and the mean muon life was calculated from this data. Subsequently, both sets of data were analyzed using Python and ROOT libraries. Additionally, a Geant4 simulation was conducted for the modified setup, and its data was also analyzed using ROOT libraries. A comparison was made between the results obtained from the Geant4 simulation and the teachspin setup, followed by a discussion of the findings.
+    This experiment aimed to determine the mean life of muons using the teachspin setup. Initially, data was collected with a scintillation detector connected to a PMT using teachspin software. Later, the setup was modified, replacing the scintillation detector with a Cherenkov detector connected to the PMT.This Experiment was taken from-\cite{diy}. Data was collected using the same software, and the mean muon life was calculated from this data. Subsequently, both sets of data were analyzed using Python and ROOT libraries. Additionally, a Geant4 simulation was conducted for the modified setup, and its data was also analyzed using ROOT libraries. A comparison was made between the results obtained from the Geant4 simulation and the teachspin setup, followed by a discussion of the findings.
 \end{abstract}
 \begin{multicols}{2}
 \pagenumbering{arabic}
@@ -354,7 +354,7 @@ The circuit diagram for the teachspin setup is shoen in the figure-\ref{circuit}
 
 \subsection{The Cherenkov Detector}
 
-In this part we replaced the scintillator with a cherenkov radiator. The Cherenkov radiator in our experiment was distilled water. For the setup we have brought a milton flask with a reflective coating inside. The PMT is placed at the top of the flask and the flask is filled with distilled water. The PMT is connected to the computer using a USB cable and the high voltage supply is connected to the PMT to provide the necessary voltage for the PMT to work. The PMT is then connected to computer via the Teachspin setup to collect the data. The setup that we made is shown in the figure-\ref{cherenkovsetup}.
+In this part we replaced the scintillator with a cherenkov radiator. The Cherenkov radiator in our experiment was distilled water. For the setup we have brought a milton flask with a reflective coating inside-\cite{diy}. The PMT is placed at the top of the flask and the flask is filled with distilled water. The PMT is connected to the computer using a USB cable and the high voltage supply is connected to the PMT to provide the necessary voltage for the PMT to work. The PMT is then connected to computer via the Teachspin setup to collect the data. The setup that we made is shown in the figure-\ref{cherenkovsetup}.
 
 
 \begin{figure}[H]
@@ -367,7 +367,7 @@ In this part we replaced the scintillator with a cherenkov radiator. The Cherenk
 
 \subsection{The Procedure and the Working of the Setups}
 
-In both the setups the working of the setup is the same. The cosmic muons enter the detector and the PMT detects the light produced by the scintillator or the Cherenkov radiator. The PMT converts the light into an electrical signal which is then fed into the computer. The computer records the time at which the muon enters the detector and the time at which the muon decays.
+In both the setups the working of the setup is the same. The cosmic muons enter the detector and the PMT detects the light produced by the scintillator or the Cherenkov radiator. The PMT converts the light into an electrical signal which is then fed into the computer. The computer records the time at which the muon enters the detector and the time at which the muon decays.-\cite{teachspin}
 
 The measureent of the time of decay is done by triggering the timers present in the Teachspin setup. When a high energy muon enters the scintillator/cherenkov a light cone is produced. It uis detected by the PMT which produces a signal. This signal triggers a timer and it starts the timer. There are two reasons for the timer to stop:
 \begin{enumerate}
@@ -384,22 +384,13 @@ Also, the probability of 2 muons enetering the detector within this 200 microsec
 The exact geometry of the setup that is present in the lab is simutaled in the Geant4. The room in which we were doing the Experiment has a size of $7.62m\times\times 3.048m \times 9.144m$. This is set as the world volume for both the simulation of the scintillator and the cherenlov setup. In both the cases the the PMT and the setup is approximated to be placed in the center of the room which is the world Volume. The scintillator is approximated to be a block of plastic scintillator of size $26.5cm \times 15cm \times 26.5cm$ and the Cherenkov radiator is a volume of water in the shape of a cylinder with radius of 4cm and height of 17cm. The reflectivity of the inner surface fr both of the setup is taken to be 0.7. The outer casing of the PMT is taken to be Aluminium. It is a cylinder of diameter 8.5 cm and height of 12cm. The geometry of the scintillator setup is shown in the figure-\ref{scintgeo} and the geometry of the cherenkov setup is shown in the figure-\ref{chergeo}.
 
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width = \columnwidth]{Images/scint_sim_1.png}
-    \caption{The Simulation geometry of the scintillator detector.\cite{agostinelli2003geant4}}
-    \label{scintgeo}
-\end{figure}
 
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width = \columnwidth]{Images/cher_sim_1.jpeg}
-    \caption{The Simulation geometry of the Cherenkov radiator\cite{agostinelli2003geant4}}
-    \label{chergeo}
-\end{figure}
 
-The simulation of the cosic muons and showers are simulated by the EcoMug Standalone header file in C/C++. The data obtained, that is momentum and initial position of the muons are give an input to the ParticleGun of the Geant4 and the 100000 runs are made. Since it takes a lot of GPU power to render the simulation image of 100000 runs. A single run for demonstration is shown in the figure-\ref{sim_run} and \ref{sim_cher}.
+
+
+
+
 
 \begin{figure}[H]
     \centering
@@ -409,6 +400,12 @@ The simulation of the cosic muons and showers are simulated by the EcoMug Standa
 \end{figure}
 
 
+
+
+
+
+The simulation of the cosic muons and showers are simulated by the EcoMug Standalone header file in C/C++. The data obtained, that is momentum and initial position of the muons are give an input to the ParticleGun of the Geant4 and the 100000 runs are made. Since it takes a lot of GPU power to render the simulation image of 100000 runs. A single run for demonstration is shown in the figure-\ref{sim_run} and \ref{sim_cher}.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width = \columnwidth]{Images/cher_sim_2.jpeg}
@@ -417,12 +414,25 @@ The simulation of the cosic muons and showers are simulated by the EcoMug Standa
 \end{figure}
 
 
+
+
 In the simulations, the main aim was to compare the muon flux for both the detectors. 
 The Muon flux is calculated by running the Loop over all the events in a run and counting the number of muons that enter the detector.
 
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = \columnwidth]{Images/cher_sim_1.jpeg}
+    \caption{The Simulation geometry of the Cherenkov radiator\cite{agostinelli2003geant4}}
+    \label{chergeo}
+\end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{\label{observations}Observations and Data}
+
+
+
 
 In this section, we will discuss about the collected data using the scintillator and the Cherenkov detector. Using the Scintillator setup, we took data with different Operating vltages and different threshold voltages.
 
@@ -445,16 +455,16 @@ The Pulse of the signal that is obtained by using the scintillator detector is s
     \label{pulse_dir_cher}
 \end{figure}
 
-
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = \columnwidth]{Images/scint_sim_1.png}
+    \caption{The Simulation geometry of the scintillator detector.\cite{agostinelli2003geant4}}
+    \label{scintgeo}
+\end{figure}
 
 \subsection{Data from the Scintillator Detector}
 The collected data for the scintilation detector is fit in python-\cite{python} and ROOT-\cite{ROOT} to get the mean life of the muons. The plot of the fitted histogram is shown in the figure-\ref{scintplots}. The data for each of these readings are taken for a time period of 1 day each.
-\begin{figure*}
-    \centering
-    \includegraphics[width = 2\columnwidth]{Images/scint_plots.png}
-    \caption{THe fitted plots of the data collected using the scintillator detector.}
-    \label{scintplots}
-\end{figure*}
+
 
 \subsection{Data from the Cherenkov Detector}
 
@@ -466,11 +476,9 @@ Due to lack of time, we couldnot get eneough data for the confirmation of the mu
     \label{cherenkovplot}
 \end{figure}
 
-\subsection{Data from the Geant4 Simulations}
 
-From the simulations we can see that the amount of muons entering the scintillator is significantly lesser than the amount of muons entering the cherenkov radiator. The total number of muons registered in the scintillaor is around 19000 for 100000 runs and for the same amount of runs, the number of muons registered in the cherenkov radiator is around less than 2000. This can be seen in the distribution of muons in the scintillator and cherenkov radiator which is shown in the figure-\ref{sim_scint_plot} and -\ref{sim_cher_plot} respectievely.
 
-The muon count distribution is shown in the figure-\ref{sim_scint_plot}.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width = \columnwidth]{Images/scint_muon_dist.png}
@@ -487,6 +495,12 @@ The muon count distribution is shown in the figure-\ref{sim_scint_plot}.
 \end{figure}
 
 
+\subsection{Data from the Geant4 Simulations}
+
+From the simulations we can see that the amount of muons entering the scintillator is significantly lesser than the amount of muons entering the cherenkov radiator. The total number of muons registered in the scintillaor is around 19000 for 100000 runs and for the same amount of runs, the number of muons registered in the cherenkov radiator is around less than 2000. This can be seen in the distribution of muons in the scintillator and cherenkov radiator which is shown in the figure-\ref{sim_scint_plot} and -\ref{sim_cher_plot} respectievely.
+
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -496,7 +510,17 @@ The muon count distribution is shown in the figure-\ref{sim_scint_plot}.
 The plots are shown in the previous section. The fitting is done in Python and ROOT. The Results after fitting is tabulated in the table-\ref{scint_res}. The most accurate distribution of the decay time is when the operating voltage is 750V. So the mean lifes obtained from it are averaged out and the error is calculated. The mean life of the muons is calculated as 2096 ns with an error of 40 ns.
 
 
-\begin{table*}[ht]
+\begin{figure*}
+    \centering
+    \includegraphics[width = 2\columnwidth]{Images/scint_plots.png}
+    \caption{The fitted plots of the data collected using the scintillator detector.}
+    \label{scintplots}
+\end{figure*}
+
+
+
+
+\begin{table*}[t]
     \centering
     \resizebox{2\columnwidth}{!}{%
     \begin{tabular}{|c|ccc|ccc|ccc|}
@@ -525,7 +549,7 @@ The Fermi coupling constant is calculated using the formula:
 
 using the value of the mean life of the muon as 2096 ns, the Fermi coupling constant is calculated as:
 \begin{equation}
-    \frac{G_f}{(hc)^3} = 4.647 \times 10^{14} J^{-2} = 1.189 \times 10^{-5} GeV^{-2} 
+    \frac{G_f}{(\hbar c)^3} = 4.647 \times 10^{14} J^{-2} = 1.189 \times 10^{-5} GeV^{-2} 
 \end{equation}
 
 
@@ -549,15 +573,15 @@ Now for the cherenkov radiator, we were able to get onlu one of the reading for 
 with a percentage error of 9.8\%.
 
 
-The percentage error in the fermi coupling constant is half of that of the error in the mean life of the muons. So, the Fermi coupling constant is given by:
+The percentage error in the fermi coupling constant is half of that of the error in the mean life of the muons. So, the error in Fermi coupling constant is given by:
 
 \begin{equation}
-    \delta \frac{G_f}{(hc)^3} = \frac{G_f}{(hc)^3} \times \frac{1}{2} \times \frac{\delta \tau}{\tau} = 0.011 \times 10^{-5} GeV^{-2}
+    \delta \frac{G_f}{(\hbar c)^3} = \frac{G_f}{(\hbar c)^3} \times \frac{1}{2} \times \frac{\delta \tau}{\tau} = 0.011 \times 10^{-5} GeV^{-2}
 \end{equation}
 
 so the Fermi coupling constant is given by:
 \begin{equation}
-    G_f = 1.189 \pm 0.011 \times 10^{-5} GeV^{-2}
+    \frac{G_f}{(\hbar c)^3} = (1.189 \pm 0.011) \times 10^{-5} GeV^{-2}
 \end{equation}
 
 
@@ -575,7 +599,36 @@ Also, from the simulations, it is observed that there is not eneough data to con
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{\label{Conclusion}Conclusion and Discussions}
 
-hihi-\cite{ROOT}
+It is evident from the results that this method of calculating the muonlifetime using the scintillator gives as very close result to the actual value of $2.2 \mu s$. So, we successfully completed the experiment using the Scintillator. 
+
+Also, we have made an attempt to create an experiment using the Cherenkov radiator. The data obtained from the Cherenkov radiator is not enough to confirm that the detected pulses are of muons. The data obtained is very low and the muon count is also very low. This is evident from the Simulations that the amount of Muons that enter the Cherenkov radiator is very low compared to the scintillator detector. So, we can conclude that the Cherenkov radiator that we made using a jug of water is not a good detector for detecting the muons as the size of it is very low. Since the flux is low, the decay events that occur is much more lower than that of the scintillator detector. This is clearly seen in the figure-\ref{pulse_dir_cher} which is obtained after waiting for a long period of time. We were only abe to get around 100 decay events in a time period of 75 hours with the cherenkov radiator. Also we require those muons that could stop in the jug and then decay which produce another signal. This is very rare and the muons that stop in the jug are very less.
+
+\subsection{Discussions and Sources of Error}
+
+The Possible Sources of Error are listed as follows:
+
+\begin{enumerate}
+    \item The detectors used for measuring the muon decay events have a finite resolution, lead to accumulation of errors in determining the exact time of decay.
+    \item Background radiation events like alpha or gamma decay from the environment may contribute to observed signal introducing uncertainty in the measurement.
+    \item Muon decay is a random process, and the number of detected decays in a finite time is subject to statistical fluctuations. These fluctuations can introduce uncertainties in the measured lifetime, especially if the count rate is low.
+    \item For the cherenkov setup, one of the main source of error could be the gaps in the sealing of the PMT with the Jug. The light produced by the cherenkov radiator may escape through these gaps and may not be detected by the PMT.
+    \item Coloured Substances between the PMT and the water in Jug. the tape and the wires that we used to mount the PMT properly into in the jug were coloured. This may absorb the weak light produced by the muons and electrons.
+    \item Also the Reflectivity of the material in the jug is very less as compared to the old flasks. This may also lead to the absorbtion of the light produced by the muons and electrons.
+\end{enumerate}
+
+
+\subsection{Possible Modifications and Future Work}
+
+\begin{itemize}
+    \item The Cherenkov radiator's experimental configuration might have benefited from enlarging the jug's volume, replacing it with a larger one. Additionally, extending the duration of observation to a week or more could yield ample data readings.
+    \item Choosing an older type of flask where the inner surface of the flask is more polished and reflective.
+    \item To mitigate the impact of environmental radiation and other sources of noise, employ background subtraction techniques. This entails conducting measurements with the apparatus either turned off or shielded, and then subtracting these background counts from the overall counts.
+\end{itemize}
+
+
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
