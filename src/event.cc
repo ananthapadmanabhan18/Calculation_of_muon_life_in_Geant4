@@ -17,7 +17,7 @@ void eventaction::BeginOfEventAction(const G4Event*)
 }
 void eventaction::EndOfEventAction(const G4Event*)
 {
-    G4cout << "Number of optical photons produced: " << PhotonCount << G4endl;
+    // G4cout << "Number of optical photons produced: " << PhotonCount << G4endl;
     G4AnalysisManager *man = G4AnalysisManager::Instance();
     man->FillNtupleDColumn(0, 0, PhotonCount);
     man->AddNtupleRow(0);

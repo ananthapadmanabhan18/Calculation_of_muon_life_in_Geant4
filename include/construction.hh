@@ -47,6 +47,8 @@ class detectorconstruction : public G4VUserDetectorConstruction
 
         G4double n_scint[2] = {1.2, 1.2};
         G4double R_scint[2] = {0.9, 0.9};
+        G4LogicalVolume* logic_scint;
+        G4LogicalVolume* logic_pmt_photocathode;
 
         // G4OpticalSurface* opticalSurface;
 

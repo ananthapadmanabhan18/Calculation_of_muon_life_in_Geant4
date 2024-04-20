@@ -8,7 +8,8 @@ G4VPhysicalVolume *detectorconstruction::Construct(){
 
     // Define materials
     G4NistManager* nistManager = G4NistManager::Instance();
-    
+    G4RotationMatrix* rot = new G4RotationMatrix();
+    rot->rotateX(90*deg);
 
     G4bool checkoverlap = true;
 
@@ -49,8 +50,21 @@ G4VPhysicalVolume *detectorconstruction::Construct(){
     scint_table->AddProperty("RINDEX", energy, n_scint, 2);
     scint_mat->SetMaterialPropertiesTable(scint_table);
     G4Box* solid_scint = new G4Box("scint", 13.25*cm, 7.25*cm, 13.25*cm);
-    G4LogicalVolume* logic_scint = new G4LogicalVolume(solid_scint, scint_mat, "logical_scint");
+    logic_scint = new G4LogicalVolume(solid_scint, scint_mat, "logical_scint");
     new G4PVPlacement(nullptr, G4ThreeVector(0,0,0), logic_scint, "physical_scint", logic_tape, false, 0, checkoverlap);
+
+
+    // Defining PMT Volume
+    G4Material* pmt_case_mat = nistManager->FindOrBuildMaterial("G4_Al");
+    G4Tubs* solid_pmt_case = new G4Tubs("pmt_case", 4*cm, 4.25*cm, 7.5*cm+12*cm/2, 0, 2*M_PI);
+    G4LogicalVolume* logic_pmt_case = new G4LogicalVolume(solid_pmt_case, pmt_case_mat, "logical_pmt_case");
+    new G4PVPlacement(rot, G4ThreeVector(0,13.25*cm+7.5*cm,0), logic_pmt_case, "physical_pmt_case", logicworld, false, 0, checkoverlap);
+
+    G4Material* pmt_photocathode_mat = nistManager->FindOrBuildMaterial("G4_Bi");
+    G4Tubs* solid_pmt_photocathode = new G4Tubs("pmt_photocathode", 0, 4*cm, 0.1*mm, 0, 2*M_PI);
+    logic_pmt_photocathode = new G4LogicalVolume(solid_pmt_photocathode, pmt_photocathode_mat, "logical_pmt_photocathode");
+    new G4PVPlacement(rot, G4ThreeVector(0,0,7.5*cm+0.1*mm/2), logic_pmt_photocathode, "physical_pmt_photocathode", logic_pmt_case, false, 0, checkoverlap);
+
 
 
 
@@ -60,5 +74,5 @@ G4VPhysicalVolume *detectorconstruction::Construct(){
 
 void detectorconstruction::ConstructSDandField(){
     sensitivedetector *sensdet = new sensitivedetector("SD");
-    // logic_pmt_support_1->SetSensitiveDetector(sensdet);
+    logic_pmt_photocathode->SetSensitiveDetector(sensdet);
 }

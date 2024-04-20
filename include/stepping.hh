@@ -5,6 +5,8 @@
 #include "G4Step.hh"
 #include "construction.hh"
 #include "event.hh"
+#include "G4MuonPlus.hh"
+#include "G4OpticalPhoton.hh"
 
 class steppingaction : public G4UserSteppingAction
 {

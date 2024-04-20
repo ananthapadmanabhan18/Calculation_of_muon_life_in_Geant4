@@ -383,6 +383,38 @@ Also, the probability of 2 muons enetering the detector within this 200 microsec
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{\label{simobs}Performance and Geometry Simulations using Geant4}
+
+The exact geometry of the setup that is present in the lab is simutaled in the Geant4. The room in which we were doing the Experiment has a size of $7.62m\times\times 3.048m \times 9.144m$. This is set as the world volume for both the simulation of the scintillator and the cherenlov setup. In both the cases the the PMT and the setup is approximated to be placed in the center of the room which is the world Volume. The scintillator is approximated to be a block of plastic scintillator of size $26.5cm \times 15cm \times 26.5cm$ and the Cherenkov radiator is a volume of water in the shape of a cylinder with radius of 4cm and height of 17cm. The reflectivity of the inner surface fr both of the setup is taken to be 0.7. The outer casing of the PMT is taken to be Aluminium. It is a cylinder of diameter 8.5 cm and height of 12cm. The geometry of the scintillator setup is shown in the figure-\ref{scintgeo} and the geometry of the cherenkov setup is shown in the figure-\ref{chergeo}.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = \columnwidth]{Images/scint_sim_1.png}
+    \caption{The Simulation geometry of the scintillator detector.}
+    \label{scintgeo}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = \columnwidth]{Images/scint_sim_1.png}
+    \caption{The Simulation geometry of the Cherenkov radiator}
+    \label{chergeo}
+\end{figure}
+
+The simulation of the cosic muons and showers are simulated by the EcoMug Standalone header file in C/C++. The data obtained, that is momentum and initial position of the muons are give an input to the ParticleGun of the Geant4 and the 100000 runs are made. Since it takes a lot of GPU power to render the simulation image of 100000 runs. A single run for demonstration is shown in the figure-\ref{sim_run}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = \columnwidth]{Images/scint_sim_2.png}
+    \caption{The production of the light cone in the scintillator due to the cosmic muons and its decay. Here the Blue line represents the cosmic muon plus and the green lines represent the optical photons created in the scintillator. in the 3D image the decayed Electron can also be observed.}
+    \label{sim_run}
+\end{figure}
+
+
+In the simulations, the main aim was to compare the muon flux for both the detectors. 
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{\label{observations}Observations and Data}
@@ -390,8 +422,8 @@ Also, the probability of 2 muons enetering the detector within this 200 microsec
 In this section, we will discuss about the collected data using the scintillator and the Cherenkov detector. Using the Scintillator setup, we took data with different Operating vltages and different threshold voltages.
 
 
-\subsubsection{Data from the Scintillator Detector}
-The collected data for the scintilation detector is fit in python-\cite{python} and ROOT-\cite{ROOT} to get the mean life of the muons. The plot of the fitted histogram is shown in the figure-\ref{scintplots}.
+\subsection{Data from the Scintillator Detector}
+The collected data for the scintilation detector is fit in python-\cite{python} and ROOT-\cite{ROOT} to get the mean life of the muons. The plot of the fitted histogram is shown in the figure-\ref{scintplots}. The data for each of these readings are taken for a time period of 1 day each.
 \begin{figure*}
     \centering
     \includegraphics[width = 2\columnwidth]{Images/scint_plots.png}
@@ -401,8 +433,13 @@ The collected data for the scintilation detector is fit in python-\cite{python} 
 
 \subsection{Data from the Cherenkov Detector}
 
-Due to lack of time, we couldnot get eneough data for the confirmation of the muon detection. Only one set of Data is taken with an operatin voltage of 750V and a threshold voltage of 100mV. The data is shown in the figure-\ref{cherenkovplot}.
-
+Due to lack of time, we couldnot get eneough data for the confirmation of the muon detection. Only one set of Data is taken with an operating voltage of 750V and a threshold voltage of 100mV. The data is shown in the figure-\ref{cherenkovplot}. The data was taken for a tim duration of approximately 75 hours. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = \columnwidth]{Images/cher_plots.png}
+    \caption{The fitted plot of the data collected using the cherenkov radiator.-\cite{python}}
+    \label{cherenkovplot}
+\end{figure}
 
 
 
@@ -411,11 +448,42 @@ Due to lack of time, we couldnot get eneough data for the confirmation of the mu
 \section{\label{dataanalysis}Data analysis}
 
 
+The plots are shown in the previous section. The fitting is done in Python and ROOT. The Results after fitting is tabulated in the table-\ref{scint_res}.
 
+
+\begin{table*}[h]
+    \centering
+    \resizebox{2\columnwidth}{!}{%
+    \begin{tabular}{|c|ccc|ccc|ccc|}
+    \hline
+    \multirow{2}{*}{\textbf{Property}} & \multicolumn{3}{c|}{\textbf{$V_{op}   = 650V$}} & \multicolumn{3}{c|}{\textbf{$V_{op}   = 700V$}} & \multicolumn{3}{c|}{\textbf{$V_{op}   = 750V$}} \\ \cline{2-10} 
+     & \multicolumn{1}{c|}{\textbf{$V_{th} = 196.5 mV$}} & \multicolumn{1}{c|}{\textbf{$V_{th} = 200mV$}} & \textbf{$V_{th} = 216.7$} & \multicolumn{1}{c|}{\textbf{$V_{th} = 198.4 mV$}} & \multicolumn{1}{c|}{\textbf{$V_{th} = 200mV$}} & \textbf{$V_{th} = 216.7$} & \multicolumn{1}{c|}{\textbf{$V_{th} = 196.5 mV$}} & \multicolumn{1}{c|}{\textbf{$V_{th} = 200mV$}} & \textbf{$V_{th} = 216.7$} \\ \hline
+    \textbf{MeanLife (ns)} & \multicolumn{1}{c|}{2050} & \multicolumn{1}{c|}{1999} & 2378 & \multicolumn{1}{c|}{2105} & \multicolumn{1}{c|}{2271} & 2159 & \multicolumn{1}{c|}{2065} & \multicolumn{1}{c|}{2159} & 2063 \\ \hline
+    \textbf{Error (ns)} & \multicolumn{1}{c|}{97} & \multicolumn{1}{c|}{112} & 134 & \multicolumn{1}{c|}{77} & \multicolumn{1}{c|}{65} & 59 & \multicolumn{1}{c|}{36} & \multicolumn{1}{c|}{46} & 37 \\ \hline
+    \end{tabular}%
+    }
+    \caption{The results of the fitted data from the Scintillation detector}
+    \label{scint_res}
+\end{table*}
+
+
+For the cherenkov radiator, as seen in the figure-\ref{cherenkovplot}
+The value of the Muon lifetime is obtained as 2398 ns with an error of 237 ns. The percentage error is 9.8\%.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{\label{error}Error Analysis}
+
+From the table-\ref{scint_res}, the error in the mean life of muons calculated from the scintillation detector are far more high at an operating voltage of 650V. So, we will consider the operating voltage as 750V. The error in the mean life of the muons is calculated by taking the average of all the errors.
+so the Muon life time is given by:
+
+\begin{equation}
+    \tau = 2096 \pm 40 ns
+\end{equation}
+with a percentage error of 1.9\%.
+
+
+Now for the 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
