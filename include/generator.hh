@@ -29,6 +29,7 @@ class primarygenerator : public G4VUserPrimaryGeneratorAction
     private:    
         G4ParticleGun* fparticlegun;
         G4ParticleDefinition *mu_plus, *mu_minus;
+        EcoMug* ecoMug;
 
 };
 

@@ -1,9 +1,9 @@
-/random/setSeeds 12345 67890
-/gps/particle gamma
-/gps/pos/type Point
-/gps/pos/centre 0.0 0.0 0.0
-/gps/ang/type iso
-#/gps/ene/type Arb
-/gps/hist/file energy_dist.root
-/gps/hist/type energy
-/run/beamOn 100
+/control/verbose 0
+/run/verbose 0
+/event/verbose 0
+/process/verbose 0
+/particle/verbose 0
+/tracking/verbose 0
+/run/numberOfThreads 1
+/run/initialize
+/run/beamOn 100000

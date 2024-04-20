@@ -44,6 +44,7 @@ class detectorconstruction : public G4VUserDetectorConstruction
         G4double rindex_plastic[2] = {0, 0};
         G4double reflectivity_steel = 0.7;
         G4LogicalVolume* logic_pmt;
+        G4LogicalVolume* logicjugwater;
 
 };
 

@@ -14,7 +14,7 @@ void eventaction::BeginOfEventAction(const G4Event*)
 }
 void eventaction::EndOfEventAction(const G4Event*)
 {
-    G4cout << "muon flux: " << photonflux << G4endl;
+    // G4cout << "muon flux: " << photonflux << G4endl;
     G4AnalysisManager* man= G4AnalysisManager::Instance();
     man->FillNtupleDColumn(0,0, photonflux);
     man->AddNtupleRow(0);

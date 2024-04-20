@@ -59,11 +59,33 @@ G4VPhysicalVolume *detectorconstruction::Construct(){
     waterMPT->AddProperty("RINDEX", photonEnergy, rindex_water, 2);
     water->SetMaterialPropertiesTable(waterMPT);
     G4Tubs* jugwater = new G4Tubs("juginner", 0, (8/2)*cm, 17*cm/2, 0, 2*M_PI);
-    G4LogicalVolume* logicjugwater = new G4LogicalVolume(jugwater, water, "logicaljugwater");
+    logicjugwater = new G4LogicalVolume(jugwater, water, "logicaljugwater");
     new G4PVPlacement(rot_mat, G4ThreeVector(0,-0.5*cm,0), logicjugwater, "physicaljugwater", logicworld, false, 0, checkoverlap);
 
 
+    // Defining PMT Volume
+    G4Material* pmt_case_mat = nistManager->FindOrBuildMaterial("G4_Al");
+    G4Tubs* solid_pmt_case = new G4Tubs("pmt_case", 4*cm, 4.25*cm,16*cm/2, 0, 2*M_PI);
+    G4LogicalVolume* logic_pmt_case = new G4LogicalVolume(solid_pmt_case, pmt_case_mat, "logical_pmt_case");
+    new G4PVPlacement(rot_mat, G4ThreeVector(0,10.25*cm+7.5*cm,0), logic_pmt_case, "physical_pmt_case", logicworld, false, 0, checkoverlap);
+    G4VisAttributes* pmt_case_vis = new G4VisAttributes(G4Colour(0.5,0.5,0.5));
+    pmt_case_vis->SetForceSolid(true);
 
+    G4Material* pmt_photocathode_mat = nistManager->FindOrBuildMaterial("G4_Bi");
+    G4Tubs* solid_pmt_photocathode = new G4Tubs("pmt_photocathode", 0, 4*cm, 0.1*mm, 0, 2*M_PI);
+    G4LogicalVolume* logic_pmt_photocathode = new G4LogicalVolume(solid_pmt_photocathode, pmt_photocathode_mat, "logical_pmt_photocathode");
+    new G4PVPlacement(nullptr, G4ThreeVector(0,0,5.5*cm+0.1*mm/2), logic_pmt_photocathode, "physical_pmt_photocathode", logic_pmt_case, false, 0, checkoverlap);
+
+
+
+    // Defining the lower cap
+    G4Material* cap_mat = nistManager->FindOrBuildMaterial("G4_PLASTIC_SC_VINYLTOLUENE");
+    G4Tubs* solid_cap = new G4Tubs("cap", 0, 6*cm, 1.5*cm/2, 0, 2*M_PI);
+    G4LogicalVolume* logic_cap = new G4LogicalVolume(solid_cap, cap_mat, "logical_cap");
+    new G4PVPlacement(rot_mat, G4ThreeVector(0,-9.75*cm,0), logic_cap, "physical_cap", logicworld, false, 0, checkoverlap);
+    G4VisAttributes* cap_vis = new G4VisAttributes(G4Colour(0.5,0.5,0.5));
+    cap_vis->SetForceSolid(true);
+    logic_cap->SetVisAttributes(cap_vis);
 
 
 
@@ -74,5 +96,5 @@ G4VPhysicalVolume *detectorconstruction::Construct(){
 
 void detectorconstruction::ConstructSDandField(){
     sensitivedetector *sensdet = new sensitivedetector("SD");
-    // logic_pmt->SetSensitiveDetector(sensdet);
+    logicjugwater->SetSensitiveDetector(sensdet);
 }
