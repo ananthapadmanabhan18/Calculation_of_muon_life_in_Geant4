@@ -39,7 +39,7 @@ void primarygenerator::GeneratePrimaries(G4Event *anEvent)
     std::array<G4double, 3> position = ecoMug->GetGenerationPosition();
     G4ThreeVector pos(position[0]*mm, position[2]*mm, position[1]*mm);
     G4ThreeVector trial_pos(1*m,0,0);
-    fparticlegun->SetParticlePosition(trial_pos);
+    fparticlegun->SetParticlePosition(pos);
 
 
     //Setting the Momentum
@@ -48,7 +48,7 @@ void primarygenerator::GeneratePrimaries(G4Event *anEvent)
     G4double phi = ecoMug->GetGenerationPhi();
     G4ThreeVector mom(momentum*sin(theta)*cos(phi)*GeV, momentum*cos(theta)*GeV, momentum*sin(theta)*sin(phi)*GeV);
     G4ThreeVector trial_mom(-1*GeV,0.01*GeV,0.01*GeV);
-    fparticlegun->SetParticleMomentum(trial_mom);
+    fparticlegun->SetParticleMomentum(mom);
 
 
 
